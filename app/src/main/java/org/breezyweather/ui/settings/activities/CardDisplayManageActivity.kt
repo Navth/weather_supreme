@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.settings.activities
 
 import android.animation.AnimatorSet
@@ -189,7 +173,7 @@ class CardDisplayManageActivity : BreezyActivity() {
         val newList = mCardDisplayAdapter.cardDisplayList
         if (oldList != newList) {
             SettingsManager.getInstance(this).cardDisplayList = newList
-            // We need to do this manually, because the setter above can’t do it, or the main screen would reload
+            // We need to do this manually, because the setter above canâ€™t do it, or the main screen would reload
             // on main screen drap & drops
             EventBus
                 .instance

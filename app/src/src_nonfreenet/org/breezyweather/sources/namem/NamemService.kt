@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.namem
 
 import android.content.Context
@@ -226,7 +210,7 @@ class NamemService @Inject constructor(
         var o3: Double? = null
         var cO: Double? = null
         station?.elementList?.forEach {
-            if (it.unit == "АЧИ") {
+            if (it.unit == "ÐÐ§Ð˜") {
                 when (it.id) {
                     "pm25" -> pM25 = convertAqi(PollutantIndex.PM25, it.current)
                     "pm10" -> pM10 = convertAqi(PollutantIndex.PM10, it.current)
@@ -361,30 +345,30 @@ class NamemService @Inject constructor(
     ): String? {
         // TODO: Check with a Mongolian speaker (???) for correct interpretation of the text
         return when (weather) {
-            2 -> context.getString(R.string.common_weather_text_clear_sky) // "Цэлмэг"
-            3 -> context.getString(R.string.common_weather_text_overcast) // "Үүлэрхэг"
-            5, 7 -> context.getString(R.string.common_weather_text_mostly_clear) // "Багавтар үүлтэй"
-            9, 10 -> context.getString(R.string.common_weather_text_cloudy) // "Үүлшинэ"
-            20 -> context.getString(R.string.common_weather_text_mostly_clear) // "Үүл багасна"
-            23, 24 -> context.getString(R.string.common_weather_text_snow_light) // "Ялимгүй цас"
-            // "Ялимгүй хур тунадас":
+            2 -> context.getString(R.string.common_weather_text_clear_sky) // "Ð¦ÑÐ»Ð¼ÑÐ³"
+            3 -> context.getString(R.string.common_weather_text_overcast) // "Ò®Ò¯Ð»ÑÑ€Ñ…ÑÐ³"
+            5, 7 -> context.getString(R.string.common_weather_text_mostly_clear) // "Ð‘Ð°Ð³Ð°Ð²Ñ‚Ð°Ñ€ Ò¯Ò¯Ð»Ñ‚ÑÐ¹"
+            9, 10 -> context.getString(R.string.common_weather_text_cloudy) // "Ò®Ò¯Ð»ÑˆÐ¸Ð½Ñ"
+            20 -> context.getString(R.string.common_weather_text_mostly_clear) // "Ò®Ò¯Ð» Ð±Ð°Ð³Ð°ÑÐ½Ð°"
+            23, 24 -> context.getString(R.string.common_weather_text_snow_light) // "Ð¯Ð»Ð¸Ð¼Ð³Ò¯Ð¹ Ñ†Ð°Ñ"
+            // "Ð¯Ð»Ð¸Ð¼Ð³Ò¯Ð¹ Ñ…ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ":
             27, 28 -> context.getString(R.string.common_weather_text_rain_snow_mixed_showers_light)
-            60 -> context.getString(R.string.common_weather_text_rain_light) // "Бага зэргийн бороо"
-            61 -> context.getString(R.string.common_weather_text_rain) // "Бороо"
-            63 -> context.getString(R.string.common_weather_text_rain_heavy) // "Их бороо"
-            65 -> context.getString(R.string.common_weather_text_rain_snow_mixed) // "Хур тунадас"
-            66 -> context.getString(R.string.common_weather_text_rain_snow_mixed_heavy) // "Их хур тунадас"
-            67 -> context.getString(R.string.common_weather_text_rain_snow_mixed_heavy) // "Аадар их хур тунадас"
-            68 -> context.getString(R.string.common_weather_text_rain_heavy) // "Их усархаг бороо"
-            71 -> context.getString(R.string.common_weather_text_snow) // "Цас"
-            73 -> context.getString(R.string.common_weather_text_snow_heavy) // "Их цас"
-            75 -> context.getString(R.string.common_weather_text_snow_heavy) // "Аадар их цас"
-            80, 81 -> context.getString(R.string.common_weather_text_rain_showers_light) // "Бага зэргийн аадар"
-            82, 83 -> context.getString(R.string.common_weather_text_rain_showers) // "Аадар бороо"
-            84, 85 -> context.getString(R.string.common_weather_text_rain_showers_heavy) // "Усархаг аадар бороо"
-            90, 91 -> context.getString(R.string.weather_kind_thunderstorm) // "Дуу.Цах бага зэргийн аадар бороо"
-            92, 93 -> context.getString(R.string.weather_kind_thunderstorm) // "Дуу.Цах аадар бороо"
-            94, 95 -> context.getString(R.string.weather_kind_thunderstorm) // "Дуу.Цах усархаг аадар бороо"
+            60 -> context.getString(R.string.common_weather_text_rain_light) // "Ð‘Ð°Ð³Ð° Ð·ÑÑ€Ð³Ð¸Ð¹Ð½ Ð±Ð¾Ñ€Ð¾Ð¾"
+            61 -> context.getString(R.string.common_weather_text_rain) // "Ð‘Ð¾Ñ€Ð¾Ð¾"
+            63 -> context.getString(R.string.common_weather_text_rain_heavy) // "Ð˜Ñ… Ð±Ð¾Ñ€Ð¾Ð¾"
+            65 -> context.getString(R.string.common_weather_text_rain_snow_mixed) // "Ð¥ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            66 -> context.getString(R.string.common_weather_text_rain_snow_mixed_heavy) // "Ð˜Ñ… Ñ…ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            67 -> context.getString(R.string.common_weather_text_rain_snow_mixed_heavy) // "ÐÐ°Ð´Ð°Ñ€ Ð¸Ñ… Ñ…ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            68 -> context.getString(R.string.common_weather_text_rain_heavy) // "Ð˜Ñ… ÑƒÑÐ°Ñ€Ñ…Ð°Ð³ Ð±Ð¾Ñ€Ð¾Ð¾"
+            71 -> context.getString(R.string.common_weather_text_snow) // "Ð¦Ð°Ñ"
+            73 -> context.getString(R.string.common_weather_text_snow_heavy) // "Ð˜Ñ… Ñ†Ð°Ñ"
+            75 -> context.getString(R.string.common_weather_text_snow_heavy) // "ÐÐ°Ð´Ð°Ñ€ Ð¸Ñ… Ñ†Ð°Ñ"
+            80, 81 -> context.getString(R.string.common_weather_text_rain_showers_light) // "Ð‘Ð°Ð³Ð° Ð·ÑÑ€Ð³Ð¸Ð¹Ð½ Ð°Ð°Ð´Ð°Ñ€"
+            82, 83 -> context.getString(R.string.common_weather_text_rain_showers) // "ÐÐ°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            84, 85 -> context.getString(R.string.common_weather_text_rain_showers_heavy) // "Ð£ÑÐ°Ñ€Ñ…Ð°Ð³ Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            90, 91 -> context.getString(R.string.weather_kind_thunderstorm) // "Ð”ÑƒÑƒ.Ð¦Ð°Ñ… Ð±Ð°Ð³Ð° Ð·ÑÑ€Ð³Ð¸Ð¹Ð½ Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            92, 93 -> context.getString(R.string.weather_kind_thunderstorm) // "Ð”ÑƒÑƒ.Ð¦Ð°Ñ… Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            94, 95 -> context.getString(R.string.weather_kind_thunderstorm) // "Ð”ÑƒÑƒ.Ð¦Ð°Ñ… ÑƒÑÐ°Ñ€Ñ…Ð°Ð³ Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
             else -> null
         }
     }
@@ -393,36 +377,36 @@ class NamemService @Inject constructor(
         weather: Int?,
     ): WeatherCode? {
         return when (weather) {
-            2 -> WeatherCode.CLEAR // "Цэлмэг"
-            3 -> WeatherCode.CLOUDY // "Үүлэрхэг"
-            5, 7 -> WeatherCode.PARTLY_CLOUDY // "Багавтар үүлтэй"
-            9, 10 -> WeatherCode.CLOUDY // "Үүлшинэ"
-            20 -> WeatherCode.PARTLY_CLOUDY // "Үүл багасна"
-            23, 24 -> WeatherCode.SNOW // "Ялимгүй цас"
-            27, 28 -> WeatherCode.SLEET // "Ялимгүй хур тунадас"
-            60 -> WeatherCode.RAIN // "Бага зэргийн бороо"
-            61 -> WeatherCode.RAIN // "Бороо"
-            63 -> WeatherCode.RAIN // "Их бороо"
-            65 -> WeatherCode.SLEET // "Хур тунадас"
-            66 -> WeatherCode.SLEET // "Их хур тунадас"
-            67 -> WeatherCode.SLEET // "Аадар их хур тунадас"
-            68 -> WeatherCode.RAIN // "Их усархаг бороо"
-            71 -> WeatherCode.SNOW // "Цас"
-            73 -> WeatherCode.SNOW // "Их цас"
-            75 -> WeatherCode.SNOW // "Аадар их цас"
-            80, 81 -> WeatherCode.RAIN // "Бага зэргийн аадар"
-            82, 83 -> WeatherCode.RAIN // "Аадар бороо"
-            84, 85 -> WeatherCode.RAIN // "Усархаг аадар бороо"
-            90, 91 -> WeatherCode.THUNDERSTORM // "Дуу.Цах бага зэргийн аадар бороо"
-            92, 93 -> WeatherCode.THUNDERSTORM // "Дуу.Цах аадар бороо"
-            94, 95 -> WeatherCode.THUNDERSTORM // "Дуу.Цах усархаг аадар бороо"
+            2 -> WeatherCode.CLEAR // "Ð¦ÑÐ»Ð¼ÑÐ³"
+            3 -> WeatherCode.CLOUDY // "Ò®Ò¯Ð»ÑÑ€Ñ…ÑÐ³"
+            5, 7 -> WeatherCode.PARTLY_CLOUDY // "Ð‘Ð°Ð³Ð°Ð²Ñ‚Ð°Ñ€ Ò¯Ò¯Ð»Ñ‚ÑÐ¹"
+            9, 10 -> WeatherCode.CLOUDY // "Ò®Ò¯Ð»ÑˆÐ¸Ð½Ñ"
+            20 -> WeatherCode.PARTLY_CLOUDY // "Ò®Ò¯Ð» Ð±Ð°Ð³Ð°ÑÐ½Ð°"
+            23, 24 -> WeatherCode.SNOW // "Ð¯Ð»Ð¸Ð¼Ð³Ò¯Ð¹ Ñ†Ð°Ñ"
+            27, 28 -> WeatherCode.SLEET // "Ð¯Ð»Ð¸Ð¼Ð³Ò¯Ð¹ Ñ…ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            60 -> WeatherCode.RAIN // "Ð‘Ð°Ð³Ð° Ð·ÑÑ€Ð³Ð¸Ð¹Ð½ Ð±Ð¾Ñ€Ð¾Ð¾"
+            61 -> WeatherCode.RAIN // "Ð‘Ð¾Ñ€Ð¾Ð¾"
+            63 -> WeatherCode.RAIN // "Ð˜Ñ… Ð±Ð¾Ñ€Ð¾Ð¾"
+            65 -> WeatherCode.SLEET // "Ð¥ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            66 -> WeatherCode.SLEET // "Ð˜Ñ… Ñ…ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            67 -> WeatherCode.SLEET // "ÐÐ°Ð´Ð°Ñ€ Ð¸Ñ… Ñ…ÑƒÑ€ Ñ‚ÑƒÐ½Ð°Ð´Ð°Ñ"
+            68 -> WeatherCode.RAIN // "Ð˜Ñ… ÑƒÑÐ°Ñ€Ñ…Ð°Ð³ Ð±Ð¾Ñ€Ð¾Ð¾"
+            71 -> WeatherCode.SNOW // "Ð¦Ð°Ñ"
+            73 -> WeatherCode.SNOW // "Ð˜Ñ… Ñ†Ð°Ñ"
+            75 -> WeatherCode.SNOW // "ÐÐ°Ð´Ð°Ñ€ Ð¸Ñ… Ñ†Ð°Ñ"
+            80, 81 -> WeatherCode.RAIN // "Ð‘Ð°Ð³Ð° Ð·ÑÑ€Ð³Ð¸Ð¹Ð½ Ð°Ð°Ð´Ð°Ñ€"
+            82, 83 -> WeatherCode.RAIN // "ÐÐ°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            84, 85 -> WeatherCode.RAIN // "Ð£ÑÐ°Ñ€Ñ…Ð°Ð³ Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            90, 91 -> WeatherCode.THUNDERSTORM // "Ð”ÑƒÑƒ.Ð¦Ð°Ñ… Ð±Ð°Ð³Ð° Ð·ÑÑ€Ð³Ð¸Ð¹Ð½ Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            92, 93 -> WeatherCode.THUNDERSTORM // "Ð”ÑƒÑƒ.Ð¦Ð°Ñ… Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
+            94, 95 -> WeatherCode.THUNDERSTORM // "Ð”ÑƒÑƒ.Ð¦Ð°Ñ… ÑƒÑÐ°Ñ€Ñ…Ð°Ð³ Ð°Ð°Ð´Ð°Ñ€ Ð±Ð¾Ñ€Ð¾Ð¾"
             else -> null
         }
     }
 
     // Convert Mongolian AQI to pollutant concentration
-    // SO2, NO2, PM10, PM2.5, O3 in µg/m³
-    // CO in mg/m³
+    // SO2, NO2, PM10, PM2.5, O3 in Âµg/mÂ³
+    // CO in mg/mÂ³
     //
     // Breakpoint source: http://agaar.mn/article-view/692
     private fun convertAqi(
@@ -490,11 +474,11 @@ class NamemService @Inject constructor(
         return listOf(
             LocationAddressInfo(
                 timeZoneId = when (station.provinceName) {
-                    "Баян-Өлгий", // Bayan-Ölgii
-                    "Говь-Алтай", // Govi-Altai
-                    "Ховд", // Khovd
-                    "Увс", // Uvs
-                    "Завхан", // Zavkhan
+                    "Ð‘Ð°ÑÐ½-Ó¨Ð»Ð³Ð¸Ð¹", // Bayan-Ã–lgii
+                    "Ð“Ð¾Ð²ÑŒ-ÐÐ»Ñ‚Ð°Ð¹", // Govi-Altai
+                    "Ð¥Ð¾Ð²Ð´", // Khovd
+                    "Ð£Ð²Ñ", // Uvs
+                    "Ð—Ð°Ð²Ñ…Ð°Ð½", // Zavkhan
                     -> "Asia/Hovd"
                     else -> "Asia/Ulaanbaatar"
                 },

@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.nws
 
 import android.content.Context
@@ -174,11 +158,11 @@ class NwsService @Inject constructor(
             nwsAlertsResult
         ) { forecastResult, dailyResult, currentResult, alertResult ->
             val current = if (SourceFeature.CURRENT in requestedFeatures) {
-                // Unfortunately, some stations report their update time as UTC while it’s actually local time
+                // Unfortunately, some stations report their update time as UTC while itâ€™s actually local time
                 // So we need to subtract the timezone offset just to be safe
                 if (currentResult.properties?.timestamp != null &&
                     currentResult.properties.timestamp.time < Date().time -
-                    OUTDATED_HOURS.hours.inWholeMilliseconds + // Offset on next line is negative, don’t subtract here!
+                    OUTDATED_HOURS.hours.inWholeMilliseconds + // Offset on next line is negative, donâ€™t subtract here!
                     location.timeZone.rawOffset // In milliseconds
                 ) {
                     failedFeatures[SourceFeature.CURRENT] = OutdatedServerDataException()

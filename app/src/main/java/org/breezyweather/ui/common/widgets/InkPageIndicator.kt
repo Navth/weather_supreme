@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.common.widgets
 
 import android.animation.Animator
@@ -136,7 +120,7 @@ class InkPageIndicator @JvmOverloads constructor(
             typeface = getContext().getTypefaceFromTextAppearance(R.style.subtitle_text)
         }
 
-        // create paths & rect now – reuse & rewind later
+        // create paths & rect now â€“ reuse & rewind later
         addOnAttachStateChangeListener(this)
         mShowing = false
         alpha = 0f
@@ -232,7 +216,7 @@ class InkPageIndicator @JvmOverloads constructor(
         mDotCenterX = FloatArray(mPageCount) { i ->
             startLeft + i * (mDotDiameter + mGap)
         }
-        // todo just top aligning for now… should make this smarter
+        // todo just top aligning for nowâ€¦ should make this smarter
         mDotTopY = top.toFloat()
         mDotCenterY = top + mDotRadius
         mDotBottomY = (top + mDotDiameter).toFloat()
@@ -378,7 +362,7 @@ class InkPageIndicator @JvmOverloads constructor(
             dotRevealFraction == 0f &&
             !(page == mCurrentPage && mSelectedDotInPosition)
         ) {
-            // case #1 – At rest
+            // case #1 â€“ At rest
             mUnselectedDotPath.addCircle(
                 mDotCenterX[page],
                 mDotCenterY,
@@ -387,7 +371,7 @@ class InkPageIndicator @JvmOverloads constructor(
             )
         }
         if (joiningFraction > 0f && joiningFraction <= 0.5f && mRetreatingJoinX1 == INVALID_FRACTION) {
-            // case #2 – Joining neighbour, still separate
+            // case #2 â€“ Joining neighbour, still separate
 
             // start with the left dot
             mUnselectedDotLeftPath.rewind()
@@ -476,7 +460,7 @@ class InkPageIndicator @JvmOverloads constructor(
             mUnselectedDotPath.addPath(mUnselectedDotRightPath)
         }
         if (joiningFraction > 0.5f && joiningFraction < 1f && mRetreatingJoinX1 == INVALID_FRACTION) {
-            // case #3 – Joining neighbour, combined curved
+            // case #3 â€“ Joining neighbour, combined curved
 
             // adjust the fraction so that it goes from 0.3 -> 1 to produce a more realistic 'join'
             val adjustedFraction = (joiningFraction - 0.2f) * 1.25f
@@ -568,7 +552,7 @@ class InkPageIndicator @JvmOverloads constructor(
         // this is done separately so that we can have a single retreating path spanning
         // multiple dots and therefore animate it's movement smoothly
         if (dotRevealFraction > MINIMAL_REVEAL) {
-            // case #6 – previously hidden dot revealing
+            // case #6 â€“ previously hidden dot revealing
             mUnselectedDotPath.addCircle(
                 centerX,
                 mDotCenterY,
@@ -609,7 +593,7 @@ class InkPageIndicator @JvmOverloads constructor(
             }
         }
 
-        // create the anim to move the selected dot – this animator will kick off
+        // create the anim to move the selected dot â€“ this animator will kick off
         // retreat animations when it has moved 75% of the way.
         // The retreat animation in turn will kick of reveal anims when the
         // retreat has passed any dots to be revealed
@@ -623,7 +607,7 @@ class InkPageIndicator @JvmOverloads constructor(
         now: Int,
         steps: Int,
     ): ValueAnimator {
-        // Set up a pending retreat anim – this starts when the move is 75% complete
+        // Set up a pending retreat anim â€“ this starts when the move is 75% complete
         mRetreatAnimation = PendingRetreatAnimator(
             was,
             now,
@@ -664,7 +648,7 @@ class InkPageIndicator @JvmOverloads constructor(
                 }
             })
             // slightly delay the start to give the joins a chance to run
-            // unless dot isn't in position yet – then don't delay!
+            // unless dot isn't in position yet â€“ then don't delay!
             startDelay = if (mSelectedDotInPosition) mAnimDuration / 4L else 0L
             duration = mAnimDuration * 3L / 4L
             interpolator = mInterpolator
@@ -717,7 +701,7 @@ class InkPageIndicator @JvmOverloads constructor(
 
     /**
      * An Animator that shows and then shrinks a retreating join between the previous and newly
-     * selected pages.  This also sets up some pending dot reveals – to be started when the retreat
+     * selected pages.  This also sets up some pending dot reveals â€“ to be started when the retreat
      * has passed the dot to be revealed.
      */
     inner class PendingRetreatAnimator(

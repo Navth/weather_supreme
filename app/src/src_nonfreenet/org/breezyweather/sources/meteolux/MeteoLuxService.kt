@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.meteolux
 
 import android.content.Context
@@ -388,9 +372,9 @@ class MeteoLuxService @Inject constructor(
         // and therefore not assigned text to go with warning levels
         if (listOf(2, 3, 4, 5, 6, 9, 10).contains(type)) {
             headline += when (level) {
-                2 -> " – " + context.getString(R.string.meteolux_warning_text_level_2)
-                3 -> " – " + context.getString(R.string.meteolux_warning_text_level_3)
-                4 -> " – " + context.getString(R.string.meteolux_warning_text_level_4)
+                2 -> " â€“ " + context.getString(R.string.meteolux_warning_text_level_2)
+                3 -> " â€“ " + context.getString(R.string.meteolux_warning_text_level_3)
+                4 -> " â€“ " + context.getString(R.string.meteolux_warning_text_level_4)
                 else -> ""
             }
         }

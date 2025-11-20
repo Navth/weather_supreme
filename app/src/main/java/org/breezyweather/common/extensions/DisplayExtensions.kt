@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.common.extensions
 
 import android.animation.Animator
@@ -128,7 +112,7 @@ val Context.fontScale: Float
             resources.configuration.fontScale *
                 resources.displayMetrics.densityDpi.div(android.util.DisplayMetrics.DENSITY_DEVICE_STABLE.toFloat())
         } else {
-            1f // Let’s just ignore it on old Android versions
+            1f // Letâ€™s just ignore it on old Android versions
         }
     }
 
@@ -141,7 +125,7 @@ val Context.fontScaleToApply: Float
                 if (it != 1f) 1f + abs(it - 1f).div(2f).times(if (it > 1f) 1f else -1f) else it
             }
         } else {
-            1f // Let’s just ignore it on old Android versions
+            1f // Letâ€™s just ignore it on old Android versions
         }
     }
 

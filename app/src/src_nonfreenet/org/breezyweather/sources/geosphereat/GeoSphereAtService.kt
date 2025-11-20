@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.geosphereat
 
 import android.content.Context
@@ -124,7 +108,7 @@ class GeoSphereAtService @Inject constructor(
     }
 
     /**
-     * We don’t recommend forecast as it’s way too light, compared to other sources
+     * We donâ€™t recommend forecast as itâ€™s way too light, compared to other sources
      * Highest priority for Austria
      * High priority for neighbour countries
      */
@@ -384,7 +368,7 @@ class GeoSphereAtService @Inject constructor(
                 date = date,
                 minuteInterval = 15,
                 /**
-                 * If I understand correctly, the unit is kg/m², which is approximately the same as mm
+                 * If I understand correctly, the unit is kg/mÂ², which is approximately the same as mm
                  * However, since it's 15 min by 15 min, and we want mm/h unit, we just have to multiply
                  * by 4, right?
                  */

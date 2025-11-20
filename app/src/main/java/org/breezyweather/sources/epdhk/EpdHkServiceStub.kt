@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.epdhk
 
 import android.content.Context
@@ -42,8 +26,8 @@ abstract class EpdHkServiceStub(context: Context) :
     override val name by lazy {
         with(context.currentLocale.code) {
             when {
-                equals("zh-tw") || equals("zh-hk") || equals("zh-mo") -> "環境保護署"
-                startsWith("zh") -> "环境保护署"
+                equals("zh-tw") || equals("zh-hk") || equals("zh-mo") -> "ç’°å¢ƒä¿è­·ç½²"
+                startsWith("zh") -> "çŽ¯å¢ƒä¿æŠ¤ç½²"
                 else -> "EPD"
             }
         } +
@@ -54,8 +38,8 @@ abstract class EpdHkServiceStub(context: Context) :
     protected val weatherAttribution by lazy {
         with(context.currentLocale.code) {
             when {
-                equals("zh-tw") || equals("zh-hk") || equals("zh-mo") -> "環境保護署"
-                startsWith("zh") -> "环境保护署"
+                equals("zh-tw") || equals("zh-hk") || equals("zh-mo") -> "ç’°å¢ƒä¿è­·ç½²"
+                startsWith("zh") -> "çŽ¯å¢ƒä¿æŠ¤ç½²"
                 else -> "Environmental Protection Department"
             }
         }

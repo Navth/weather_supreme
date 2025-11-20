@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.naturalearth
 
 import android.content.Context
@@ -45,13 +29,13 @@ import javax.inject.Inject
  * Offline source, based on public domain data
  * 1:50m Cultural Vectors files downloaded from:
  * https://www.naturalearthdata.com/downloads/50m-cultural-vectors/
- * We can’t take 1:110m files because they don’t include all small islands/countries
+ * We canâ€™t take 1:110m files because they donâ€™t include all small islands/countries
  *
  * Latest updates used:
  * ne_50m_admin_0_countries.shp v5.1.1
  *
  * https://mapshaper.org/ was used to convert to GeoJSON
- * TODO: It would be best to make our own converter so that we can exclude features we don’t want and
+ * TODO: It would be best to make our own converter so that we can exclude features we donâ€™t want and
  *  make the geojson file more lightweight
  */
 class NaturalEarthService @Inject constructor(

@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.remoteviews.presenters.notification
 
 import android.content.Context
@@ -80,7 +64,7 @@ object NativeWidgetNotificationIMP : AbstractRemoteViewsPresenter() {
             contentTitle.append(tempFeelsLikeOrAir.formatMeasure(context, temperatureUnit))
         }
         if (!current.weatherText.isNullOrEmpty()) {
-            if (contentTitle.toString().isNotEmpty()) contentTitle.append(" – ")
+            if (contentTitle.toString().isNotEmpty()) contentTitle.append(" â€“ ")
             contentTitle.append(current.weatherText)
         }
 
@@ -112,10 +96,10 @@ object NativeWidgetNotificationIMP : AbstractRemoteViewsPresenter() {
             setSubText(subtitle.toString())
             setContentTitle(contentTitle.toString())
             if (current.airQuality?.isIndexValid == true) {
-                setContentText(context.getString(R.string.air_quality) + " – " + current.airQuality!!.getName(context))
+                setContentText(context.getString(R.string.air_quality) + " â€“ " + current.airQuality!!.getName(context))
             } else {
                 current.wind?.getStrength(context)?.let { strength ->
-                    setContentText(context.getString(R.string.wind) + " – " + strength)
+                    setContentText(context.getString(R.string.wind) + " â€“ " + strength)
                 }
             }
             setOngoing(persistent)

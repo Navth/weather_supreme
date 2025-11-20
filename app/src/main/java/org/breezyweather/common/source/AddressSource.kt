@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.common.source
 
 interface AddressSource : Source {
@@ -21,12 +5,12 @@ interface AddressSource : Source {
     /**
      * Known ambiguous country codes used by the source
      * Use `null` to let Breezy Weather process all country codes known to be potentially ambiguous.
-     *  Use this value if you have no idea what to do, or don’t want to bother testing every territory and claim
+     *  Use this value if you have no idea what to do, or donâ€™t want to bother testing every territory and claim
      * Use an empty array if the source respects all known ISO 3166-1 alpha-2 codes
      * Specify each ISO 3166-1 alpha-2 code otherwise
      *
      * Below are cities / coordinates to test each ambiguity.
-     * You need to test EACH location to validate that a country code is not ambiguous. Don’t assume that because
+     * You need to test EACH location to validate that a country code is not ambiguous. Donâ€™t assume that because
      *  the first ones succeed that the following will also. We have many evidences in the existing sources that
      *  exceptions are common
      * Tip: You can copy the following coordinates and make a bulk replace of , with "&lon=" to semi-generate URLs
@@ -40,12 +24,12 @@ interface AddressSource : Source {
      * - MO: Macau 22.19,113.54
      * - TW: Taipei 25.0375,121.5625
      * DK:
-     * - FO: Tórshavn 62,-6.783333
+     * - FO: TÃ³rshavn 62,-6.783333
      * - GL: Nuuk 64.176667,-51.736111
      * FI:
-     * - AX: Eckerö 60.216667,19.55
+     * - AX: EckerÃ¶ 60.216667,19.55
      * FR:
-     * - GP (971): Pointe-à-Pitre 16.2411,-61.5331
+     * - GP (971): Pointe-Ã -Pitre 16.2411,-61.5331
      * - MQ (972): Fort-de-France 14.6,-61.066667
      * - GF (973): Cayenne 4.9372,-52.326
      * - RE (974): Le Tampon -21.2781,55.5153
@@ -53,11 +37,11 @@ interface AddressSource : Source {
      * - YT (976): Mamoudzou -12.7806,45.2278
      * - BL (977): Gustavia 17.897908,-62.850556
      * - MF (978): Marigot 18.07,-63.01
-     * - TF (984): Port-aux-Français -49.35,70.218889
+     * - TF (984): Port-aux-FranÃ§ais -49.35,70.218889
      * - AQ (984): Dumont D'Urville -66.662778,140.001111
      * - WF (986): Mata Utu -13.283333,-176.183333
      * - PF (987): Papeete -17.566667,-149.6
-     * - NC (988): Nouméa -22.266667,166.466667
+     * - NC (988): NoumÃ©a -22.266667,166.466667
      * - CP (ignore if you have no way to make it recognize as CP): Clipperton 10.3,-109.216667
      * GB:
      * - AI: The Valley 18.220833,-63.051667
@@ -102,7 +86,7 @@ interface AddressSource : Source {
      * RS:
      * - XK: Pristina 42.663333,21.162222
      * US:
-     * - AS: Tāfuna -14.335833,-170.72
+     * - AS: TÄfuna -14.335833,-170.72
      * - GU: Dededo 13.509492,144.836528
      * - MP: Saipan 15.183333,145.75
      * - PR: Arecibo 18.375,-66.625

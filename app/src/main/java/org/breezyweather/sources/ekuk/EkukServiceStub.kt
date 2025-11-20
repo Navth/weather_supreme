@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.ekuk
 
 import android.content.Context
@@ -47,8 +31,8 @@ abstract class EkukServiceStub(context: Context) :
         with(context.currentLocale.code) {
             when {
                 startsWith("et") -> "Eesti Keskkonnauuringute Keskus"
-                startsWith("ru") -> "Эстонский центр экологических исследований"
-                startsWith("uk") -> "Естонський центр екологічних досліджень"
+                startsWith("ru") -> "Ð­ÑÑ‚Ð¾Ð½ÑÐºÐ¸Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€ ÑÐºÐ¾Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… Ð¸ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°Ð½Ð¸Ð¹"
+                startsWith("uk") -> "Ð•ÑÑ‚Ð¾Ð½ÑÑŒÐºÐ¸Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€ ÐµÐºÐ¾Ð»Ð¾Ð³Ñ–Ñ‡Ð½Ð¸Ñ… Ð´Ð¾ÑÐ»Ñ–Ð´Ð¶ÐµÐ½ÑŒ"
                 else -> "Estonian Environmental Research Center"
             }
         }

@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.smg
 
 import android.content.Context
@@ -44,7 +28,7 @@ abstract class SmgServiceStub(context: Context) :
     // for use in the source list. The English name can be used in attributions.
     override val name by lazy {
         if (context.currentLocale.code.startsWith("zh")) {
-            "地球物理氣象局"
+            "åœ°çƒç‰©ç†æ°£è±¡å±€"
         } else {
             "SMG"
         } +
@@ -55,8 +39,8 @@ abstract class SmgServiceStub(context: Context) :
     protected val weatherAttribution by lazy {
         with(context.currentLocale.code) {
             when {
-                startsWith("zh") -> "地球物理氣象局"
-                startsWith("pt") -> "Direcção dos Serviços Meteorológicos e Geofísicos"
+                startsWith("zh") -> "åœ°çƒç‰©ç†æ°£è±¡å±€"
+                startsWith("pt") -> "DirecÃ§Ã£o dos ServiÃ§os MeteorolÃ³gicos e GeofÃ­sicos"
                 else -> "Macao Meteorological and Geophysical Bureau"
             }
         }

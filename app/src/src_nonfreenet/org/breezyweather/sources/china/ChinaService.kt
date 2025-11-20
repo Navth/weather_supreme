@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.china
 
 import android.content.Context
@@ -88,8 +72,8 @@ class ChinaService @Inject constructor(
     }
 
     override val attributionLinks = mapOf(
-        "彩云天气" to "https://caiyunapp.com/",
-        "中国环境监测总站" to "https://www.cnemc.cn/"
+        "å½©äº‘å¤©æ°”" to "https://caiyunapp.com/",
+        "ä¸­å›½çŽ¯å¢ƒç›‘æµ‹æ€»ç«™" to "https://www.cnemc.cn/"
     )
 
     override fun requestWeather(
@@ -427,43 +411,43 @@ class ChinaService @Inject constructor(
 
     private fun getWeatherText(icon: String?): String {
         return if (icon.isNullOrEmpty()) {
-            "未知"
+            "æœªçŸ¥"
         } else {
             when (icon) {
-                "0", "00" -> "晴"
-                "1", "01" -> "多云"
-                "2", "02" -> "阴"
-                "3", "03" -> "阵雨"
-                "4", "04" -> "雷阵雨"
-                "5", "05" -> "雷阵雨伴有冰雹"
-                "6", "06" -> "雨夹雪"
-                "7", "07" -> "小雨"
-                "8", "08" -> "中雨"
-                "9", "09" -> "大雨"
-                "10" -> "暴雨"
-                "11" -> "大暴雨"
-                "12" -> "特大暴雨"
-                "13" -> "阵雪"
-                "14" -> "小雪"
-                "15" -> "中雪"
-                "16" -> "大雪"
-                "17" -> "暴雪"
-                "18" -> "雾"
-                "19" -> "冻雨"
-                "20" -> "沙尘暴"
-                "21" -> "小到中雨"
-                "22" -> "中到大雨"
-                "23" -> "大到暴雨"
-                "24" -> "暴雨到大暴雨"
-                "25" -> "大暴雨到特大暴雨"
-                "26" -> "小到中雪"
-                "27" -> "中到大雪"
-                "28" -> "大到暴雪"
-                "29" -> "浮尘"
-                "30" -> "扬沙"
-                "31" -> "强沙尘暴"
-                "53", "54", "55", "56" -> "霾"
-                else -> "未知"
+                "0", "00" -> "æ™´"
+                "1", "01" -> "å¤šäº‘"
+                "2", "02" -> "é˜´"
+                "3", "03" -> "é˜µé›¨"
+                "4", "04" -> "é›·é˜µé›¨"
+                "5", "05" -> "é›·é˜µé›¨ä¼´æœ‰å†°é›¹"
+                "6", "06" -> "é›¨å¤¹é›ª"
+                "7", "07" -> "å°é›¨"
+                "8", "08" -> "ä¸­é›¨"
+                "9", "09" -> "å¤§é›¨"
+                "10" -> "æš´é›¨"
+                "11" -> "å¤§æš´é›¨"
+                "12" -> "ç‰¹å¤§æš´é›¨"
+                "13" -> "é˜µé›ª"
+                "14" -> "å°é›ª"
+                "15" -> "ä¸­é›ª"
+                "16" -> "å¤§é›ª"
+                "17" -> "æš´é›ª"
+                "18" -> "é›¾"
+                "19" -> "å†»é›¨"
+                "20" -> "æ²™å°˜æš´"
+                "21" -> "å°åˆ°ä¸­é›¨"
+                "22" -> "ä¸­åˆ°å¤§é›¨"
+                "23" -> "å¤§åˆ°æš´é›¨"
+                "24" -> "æš´é›¨åˆ°å¤§æš´é›¨"
+                "25" -> "å¤§æš´é›¨åˆ°ç‰¹å¤§æš´é›¨"
+                "26" -> "å°åˆ°ä¸­é›ª"
+                "27" -> "ä¸­åˆ°å¤§é›ª"
+                "28" -> "å¤§åˆ°æš´é›ª"
+                "29" -> "æµ®å°˜"
+                "30" -> "æ‰¬æ²™"
+                "31" -> "å¼ºæ²™å°˜æš´"
+                "53", "54", "55", "56" -> "éœ¾"
+                else -> "æœªçŸ¥"
             }
         }
     }
@@ -492,10 +476,10 @@ class ChinaService @Inject constructor(
     private fun getAlertPriority(color: String?): AlertSeverity {
         if (color.isNullOrEmpty()) return AlertSeverity.UNKNOWN
         return when (color) {
-            "红", "红色" -> AlertSeverity.EXTREME
-            "橙", "橙色", "橘", "橘色", "橘黄", "橘黄色" -> AlertSeverity.SEVERE
-            "黄", "黄色" -> AlertSeverity.MODERATE
-            "蓝", "蓝色" -> AlertSeverity.MINOR
+            "çº¢", "çº¢è‰²" -> AlertSeverity.EXTREME
+            "æ©™", "æ©™è‰²", "æ©˜", "æ©˜è‰²", "æ©˜é»„", "æ©˜é»„è‰²" -> AlertSeverity.SEVERE
+            "é»„", "é»„è‰²" -> AlertSeverity.MODERATE
+            "è“", "è“è‰²" -> AlertSeverity.MINOR
             else -> AlertSeverity.UNKNOWN
         }
     }
@@ -504,10 +488,10 @@ class ChinaService @Inject constructor(
     private fun getAlertColor(color: String?): Int? {
         if (color.isNullOrEmpty()) return null
         return when (color) {
-            "红", "红色" -> Color.rgb(215, 48, 42)
-            "橙", "橙色", "橘", "橘色", "橘黄", "橘黄色" -> Color.rgb(249, 138, 30)
-            "黄", "黄色" -> Color.rgb(250, 237, 36)
-            "蓝", "蓝色" -> Color.rgb(51, 100, 255)
+            "çº¢", "çº¢è‰²" -> Color.rgb(215, 48, 42)
+            "æ©™", "æ©™è‰²", "æ©˜", "æ©˜è‰²", "æ©˜é»„", "æ©˜é»„è‰²" -> Color.rgb(249, 138, 30)
+            "é»„", "é»„è‰²" -> Color.rgb(250, 237, 36)
+            "è“", "è“è‰²" -> Color.rgb(51, 100, 255)
             else -> null
         }
     }

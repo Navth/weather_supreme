@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.theme
 
 import android.app.UiModeManager
@@ -59,11 +43,11 @@ class ThemeManager private constructor(
         )
 
         /**
-         * When dark mode is “Always light”, locations are light theme during the day, and dark theme during the night
-         * When dark mode is “Always night”:
+         * When dark mode is â€œAlways lightâ€, locations are light theme during the day, and dark theme during the night
+         * When dark mode is â€œAlways nightâ€:
          * - day/night mode for locations disabled, dark theme is always used
          * - day/night mode for locations enabled, locations are light theme during the day, and dark theme during the night
-         * When “follow system” is on, the logic above is applied based on current system dark mode
+         * When â€œfollow systemâ€ is on, the logic above is applied based on current system dark mode
          */
         fun isLightTheme(
             context: Context,

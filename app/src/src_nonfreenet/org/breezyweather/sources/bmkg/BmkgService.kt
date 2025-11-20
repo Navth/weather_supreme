@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.bmkg
 
 import android.content.Context
@@ -325,16 +309,16 @@ class BmkgService @Inject constructor(
         listOf(ibf1Result, ibf2Result, ibf3Result).forEach { item ->
             item.data?.forEach {
                 // IBFs are issued in 10 categories:
-                // • 1: minor impact, medium likelihood
-                // • 2: minor impact, high likelihood
-                // • 3: significant impact, very low likelihood
-                // • 4: significant impact, low likelihood
-                // • 5: severe impact, very low likelihood
-                // • 6: significant impact, medium likelihood
-                // • 7: significant impact, high likelihood
-                // • 8: severe impact, low likelihood
-                // • 9: severe impact, medium likelihood
-                // • 10: severe impact, high likelihood
+                // â€¢ 1: minor impact, medium likelihood
+                // â€¢ 2: minor impact, high likelihood
+                // â€¢ 3: significant impact, very low likelihood
+                // â€¢ 4: significant impact, low likelihood
+                // â€¢ 5: severe impact, very low likelihood
+                // â€¢ 6: significant impact, medium likelihood
+                // â€¢ 7: significant impact, high likelihood
+                // â€¢ 8: severe impact, low likelihood
+                // â€¢ 9: severe impact, medium likelihood
+                // â€¢ 10: severe impact, high likelihood
                 // Severity is based on this matrix:
                 // https://www.bmkg.go.id/cuaca/cuaca-berbasis-dampak.bmkg
                 severity = when (it.category) {
@@ -409,11 +393,11 @@ class BmkgService @Inject constructor(
                 context.currentLocale.code.startsWith("id")
             ) {
                 if (!it.id.isNullOrEmpty()) {
-                    text += "• ${it.id.trim()}\n"
+                    text += "â€¢ ${it.id.trim()}\n"
                 }
             } else {
                 if (!it.en.isNullOrEmpty()) {
-                    text += "• ${it.en.trim()}\n"
+                    text += "â€¢ ${it.en.trim()}\n"
                 }
             }
         }

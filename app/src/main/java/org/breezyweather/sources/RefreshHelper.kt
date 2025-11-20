@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources
 
 import android.Manifest
@@ -187,7 +171,7 @@ class RefreshHelper @Inject constructor(
         context: Context,
         location: Location,
     ): LocationResult {
-        // Longitude and latitude incorrect? Let’s return earlier
+        // Longitude and latitude incorrect? Letâ€™s return earlier
         if (location.isCurrentPosition && !currentLocationStore.isUsable) {
             // There was already an error earlier in the process, so no errors
             return LocationResult(location, emptyList())
@@ -208,7 +192,7 @@ class RefreshHelper @Inject constructor(
                     latitude = currentLocationStore.lastKnownLatitude.toDouble(),
                     longitude = currentLocationStore.lastKnownLongitude.toDouble(),
                     /*
-                     * Don’t keep old data as the user can have changed position
+                     * Donâ€™t keep old data as the user can have changed position
                      * It avoids keeping old data from a reverse geocoding-compatible weather source
                      * onto a weather source without reverse geocoding
                      */
@@ -469,7 +453,7 @@ class RefreshHelper @Inject constructor(
                 ).let {
                     if (!it.countryCode.equals(location.countryCode, ignoreCase = true)) {
                         location.copy(
-                            // Don't replace country as it doesn’t make sense when it’s a territory
+                            // Don't replace country as it doesnâ€™t make sense when itâ€™s a territory
                             // country = it.country,
                             countryCode = it.countryCode
                         )
@@ -1328,7 +1312,7 @@ class RefreshHelper @Inject constructor(
     /**
      * For a given location, will tell if data is still valid or needs a refresh
      * @param feature if null, will tell for main weather
-     * @param isRestricted some sources will prefer a longer wait, make it true if that’s the case
+     * @param isRestricted some sources will prefer a longer wait, make it true if thatâ€™s the case
      * @param minimumTime if the last update was before this minimum time, it will be forced refreshed (except for normals)
      */
     private fun isWeatherDataStillValid(

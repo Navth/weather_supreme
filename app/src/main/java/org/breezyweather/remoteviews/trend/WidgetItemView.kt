@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.remoteviews.trend
 
 import android.content.Context
@@ -106,7 +90,7 @@ class WidgetItemView @JvmOverloads constructor(
         }
 
         // top icon.
-        // TODO: Shouldn’t we let some space here regardless of whether there is an icon?
+        // TODO: Shouldnâ€™t we let some space here regardless of whether there is an icon?
         // Known issue when icon is missing, line is shifted to the top, but maybe that's not this class
         if (mTopIconDrawable != null) {
             height += iconMargin

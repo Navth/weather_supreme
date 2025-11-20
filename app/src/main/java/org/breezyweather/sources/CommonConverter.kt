@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources
 
 import breezyweather.domain.location.model.Location
@@ -84,12 +68,12 @@ import kotlin.time.Duration.Companion.nanoseconds
 /**
  * /!\ WARNING /!\
  * It took me a lot of time to write these functions.
- * I would appreciate you don’t steal my work into a proprietary software.
+ * I would appreciate you donâ€™t steal my work into a proprietary software.
  * LPGLv3 allows you to reuse my code but you have to respect its terms, basically
  * crediting the work of Breezy Weather along with giving a copy of its license.
- * If you already use a GPL license, you’re done. However, if you are using a
+ * If you already use a GPL license, youâ€™re done. However, if you are using a
  * proprietary-friendly open source license such as MIT or Apache, you will have to
- * make an exception for the file you’re using my functions in.
+ * make an exception for the file youâ€™re using my functions in.
  * For example, you will distribute your app under the MIT license with LPGLv3 exception
  * for file X. Basically, your app can become proprietary, however this file will have to
  * always stay free and open source if you add any modification to it.
@@ -573,7 +557,7 @@ private fun getCalculatedMoonPhase(
     date: Date,
 ): MoonPhase {
     val illumination = MoonIllumination.compute()
-        // Let’s take the middle of the day
+        // Letâ€™s take the middle of the day
         .on(Date(date.time + 12.hours.inWholeMilliseconds))
         .execute()
 
@@ -613,7 +597,7 @@ private fun getHourlyListByHalfDay(
 
 /**
  * Helps complete a half day with information from hourly list.
- * Mainly used by providers which don’t provide half days but only full days.
+ * Mainly used by providers which donâ€™t provide half days but only full days.
  * Currently helps completing:
  * - Weather code
  * - Weather text/phase
@@ -756,8 +740,8 @@ private fun getHalfDayWeatherCodeFromHourlyList(
     val maxVisibilityFog = 1000.meters
     val maxWindSpeedWindy = 10.metersPerSecond
 
-    // If total precipitation is greater than 1 mm
-    // and max probability is greater than 30 % (assume 100 % if not reported)
+    // If total precipitation is greater than 1Â mm
+    // and max probability is greater than 30Â % (assume 100Â % if not reported)
     if ((totPrecipitation?.total ?: 0.0.millimeters) > minPrecipIntensity &&
         (maxPrecipitationProbability?.total ?: 100.percent) > minPrecipProbability
     ) {
@@ -818,18 +802,18 @@ private fun getHalfDayWeatherCodeFromHourlyList(
         }
     }
 
-    // If average visibility is below 5 km, conditions are either FOG or HAZY
+    // If average visibility is below 5Â km, conditions are either FOG or HAZY
     if (avgVisibility != null && avgVisibility < maxVisibilityHaze) {
         if (avgVisibility < maxVisibilityFog) return WeatherCode.FOG
         return WeatherCode.HAZE
     }
 
-    // Max winds > 10 m/s, it’s windy
+    // Max winds > 10Â m/s, itâ€™s windy
     if (maxWind?.speed != null && maxWind.speed!! > maxWindSpeedWindy) {
         return WeatherCode.WIND
     }
 
-    // It’s not raining, it’s not windy, and it’s not mysterious. Just cloudy
+    // Itâ€™s not raining, itâ€™s not windy, and itâ€™s not mysterious. Just cloudy
     if (avgCloudCover != null) {
         if (avgCloudCover > CLOUD_COVER_BKN.percent) return WeatherCode.CLOUDY
         if (avgCloudCover > CLOUD_COVER_FEW.percent) return WeatherCode.PARTLY_CLOUDY
@@ -837,7 +821,7 @@ private fun getHalfDayWeatherCodeFromHourlyList(
     }
 
     // No precipitation, visibility, wind, or cloud cover data
-    // let’s fallback to the median
+    // letâ€™s fallback to the median
     val hourlyListWithWeatherCode = halfDayHourlyList.filter { it.weatherCode != null }
     return if (hourlyListWithWeatherCode.isNotEmpty()) {
         hourlyListWithWeatherCode[
@@ -1298,11 +1282,11 @@ private fun getCurrentUVFromDayMax(
     val sunlightDuration = sunSetTime - sunRiseTime
     val currentOffset = currentTime - sunRiseTime
 
-    // Make θ = −π at sunrise, θ = 0 at local noon, and θ = +π at sunset
-    // such that cos(θ) is at minimum at sunrise and sunset, and maximum at noon
+    // Make Î¸ = âˆ’Ï€ at sunrise, Î¸ = 0 at local noon, and Î¸ = +Ï€ at sunset
+    // such that cos(Î¸) is at minimum at sunrise and sunset, and maximum at noon
     val theta = (currentOffset / sunlightDuration) * 2.0 * Math.PI - Math.PI
 
-    // cos(θ) output is between −1 and 1
+    // cos(Î¸) output is between âˆ’1 and 1
     // We normalize so that dayMaxUV is multiplied by a value between 0 and 1
     val currentUV = dayMaxUV * (cos(theta) + 1) / 2
 

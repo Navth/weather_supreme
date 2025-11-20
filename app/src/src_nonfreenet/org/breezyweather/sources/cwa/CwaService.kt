@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.cwa
 
 import android.content.Context
@@ -327,22 +311,22 @@ class CwaService @Inject constructor(
         // First we check for precipitation, thunder, and fog conditions.
         weatherText?.let {
             weatherCode = when {
-                it.endsWith("有雷") -> WeatherCode.THUNDER
-                it.endsWith("大雷雹") -> WeatherCode.HAIL
-                it.endsWith("大雷雨") -> WeatherCode.THUNDERSTORM
-                it.endsWith("有雷雹") -> WeatherCode.HAIL
-                it.endsWith("有雷雪") -> WeatherCode.SNOW
-                it.endsWith("有雷雨") -> WeatherCode.THUNDERSTORM
-                it.endsWith("有雹") -> WeatherCode.HAIL
-                it.endsWith("陣雨雪") -> WeatherCode.SLEET
-                it.endsWith("有陣雨") -> WeatherCode.RAIN
-                it.endsWith("有大雪") || it.endsWith("有雪珠") || it.endsWith("有冰珠") -> WeatherCode.SNOW
-                it.endsWith("有雨雪") -> WeatherCode.SLEET
-                it.endsWith("有雨") -> WeatherCode.RAIN
-                it.endsWith("有霧") -> WeatherCode.FOG
-                it.endsWith("有閃電") || it.endsWith("有雷聲") -> WeatherCode.THUNDER
-                it.endsWith("有靄") -> WeatherCode.FOG
-                it.endsWith("有霾") -> WeatherCode.HAZE
+                it.endsWith("æœ‰é›·") -> WeatherCode.THUNDER
+                it.endsWith("å¤§é›·é›¹") -> WeatherCode.HAIL
+                it.endsWith("å¤§é›·é›¨") -> WeatherCode.THUNDERSTORM
+                it.endsWith("æœ‰é›·é›¹") -> WeatherCode.HAIL
+                it.endsWith("æœ‰é›·é›ª") -> WeatherCode.SNOW
+                it.endsWith("æœ‰é›·é›¨") -> WeatherCode.THUNDERSTORM
+                it.endsWith("æœ‰é›¹") -> WeatherCode.HAIL
+                it.endsWith("é™£é›¨é›ª") -> WeatherCode.SLEET
+                it.endsWith("æœ‰é™£é›¨") -> WeatherCode.RAIN
+                it.endsWith("æœ‰å¤§é›ª") || it.endsWith("æœ‰é›ªç ") || it.endsWith("æœ‰å†°ç ") -> WeatherCode.SNOW
+                it.endsWith("æœ‰é›¨é›ª") -> WeatherCode.SLEET
+                it.endsWith("æœ‰é›¨") -> WeatherCode.RAIN
+                it.endsWith("æœ‰éœ§") -> WeatherCode.FOG
+                it.endsWith("æœ‰é–ƒé›»") || it.endsWith("æœ‰é›·è²") -> WeatherCode.THUNDER
+                it.endsWith("æœ‰é„") -> WeatherCode.FOG
+                it.endsWith("æœ‰éœ¾") -> WeatherCode.HAZE
 
                 // If there is no precipitation, thunder, or fog, we check for strong winds.
                 // CWA's thresholds for "Strong Wind Advisory" are
@@ -353,9 +337,9 @@ class CwaService @Inject constructor(
 
                 // If there is no precipitation, thunder, fog, or wind,
                 // we determine the code from cloud cover.
-                it.startsWith("晴") -> WeatherCode.CLEAR
-                it.startsWith("多雲") -> WeatherCode.PARTLY_CLOUDY
-                it.startsWith("陰") -> WeatherCode.CLOUDY
+                it.startsWith("æ™´") -> WeatherCode.CLEAR
+                it.startsWith("å¤šé›²") -> WeatherCode.PARTLY_CLOUDY
+                it.startsWith("é™°") -> WeatherCode.CLOUDY
 
                 else -> null
             }
@@ -407,8 +391,8 @@ class CwaService @Inject constructor(
             }
     }
 
-    // Concentrations of SO₂, NO₂, O₃ are given in ppb (and in ppm for CO).
-    // We need to convert these figures to µg/m³ (and mg/m³ for CO).
+    // Concentrations of SOâ‚‚, NOâ‚‚, Oâ‚ƒ are given in ppb (and in ppm for CO).
+    // We need to convert these figures to Âµg/mÂ³ (and mg/mÂ³ for CO).
     private fun getAirQuality(
         airQualityResult: CwaAirQualityResult?,
         temperature: Temperature?,
@@ -436,7 +420,7 @@ class CwaService @Inject constructor(
                     temperature,
                     pressure
                 )?.microgramsPerCubicMeter,
-                // CWA API reports CO concentration in ppm (rather than ppb), and we save CO concentration in mg/m³.
+                // CWA API reports CO concentration in ppm (rather than ppb), and we save CO concentration in mg/mÂ³.
                 // Both are off by a factor of 1000, so we reuse the function, but assign milligramsPerCubicMeter.
                 cO = computePollutantInUgm3FromPpb(
                     PollutantIndex.CO.molecularMass,
@@ -694,10 +678,10 @@ class CwaService @Inject constructor(
 
     // CWA issues warnings primarily for counties,
     // but also for specific areas in each county:
-    //  • 山區 Mountain ("M"): 59 townships
-    //  • 基隆北海岸 Keelung North Coast ("K"): 15 townships
-    //  • 恆春半島 Hengchun Peninsula ("H"): 6 townships
-    //  • 蘭嶼綠島 Lanyu and Ludao ("L"): 2 townships
+    //  â€¢ å±±å€ Mountain ("M"): 59 townships
+    //  â€¢ åŸºéš†åŒ—æµ·å²¸ Keelung North Coast ("K"): 15 townships
+    //  â€¢ æ†æ˜¥åŠå³¶ Hengchun Peninsula ("H"): 6 townships
+    //  â€¢ è˜­å¶¼ç¶ å³¶ Lanyu and Ludao ("L"): 2 townships
     // These specifications are stored in CWA_TOWNSHIP_WARNING_AREAS.
     private fun getAlertList(
         alertResult: CwaAlertResult,
@@ -732,10 +716,10 @@ class CwaService @Inject constructor(
                 hazard.info?.affectedAreas?.location?.forEach { location ->
                     if (
                         location.locationName == countyName ||
-                        (location.locationName == countyName + "山區" && warningArea == "M") ||
-                        (location.locationName == "基隆北海岸" && warningArea == "K") ||
-                        (location.locationName == "恆春半島" && warningArea == "H") ||
-                        (location.locationName == "蘭嶼綠島" && warningArea == "L")
+                        (location.locationName == countyName + "å±±å€" && warningArea == "M") ||
+                        (location.locationName == "åŸºéš†åŒ—æµ·å²¸" && warningArea == "K") ||
+                        (location.locationName == "æ†æ˜¥åŠå³¶" && warningArea == "H") ||
+                        (location.locationName == "è˜­å¶¼ç¶ å³¶" && warningArea == "L")
                     ) {
                         // so we don't cover up a more severe level with a less severe one
                         // TODO: Why? There can be multiple same-type alerts at different times
@@ -750,7 +734,7 @@ class CwaService @Inject constructor(
                                 endDate = formatter.parse(record.datasetInfo.validTime.endTime)!!,
                                 headline = headline,
                                 description = record.contents?.content?.contentText?.trim(),
-                                source = "中央氣象署",
+                                source = "ä¸­å¤®æ°£è±¡ç½²",
                                 severity = severity,
                                 color = getAlertColor(headline, severity)
                             )
@@ -769,14 +753,14 @@ class CwaService @Inject constructor(
             null
         } else {
             when (direction) {
-                "偏北風" -> 0.0
-                "東北風" -> 45.0
-                "偏東風" -> 90.0
-                "東南風" -> 135.0
-                "偏南風" -> 180.0
-                "西南風" -> 225.0
-                "偏西風" -> 270.0
-                "西北風" -> 315.0
+                "ååŒ—é¢¨" -> 0.0
+                "æ±åŒ—é¢¨" -> 45.0
+                "åæ±é¢¨" -> 90.0
+                "æ±å—é¢¨" -> 135.0
+                "åå—é¢¨" -> 180.0
+                "è¥¿å—é¢¨" -> 225.0
+                "åè¥¿é¢¨" -> 270.0
+                "è¥¿åŒ—é¢¨" -> 315.0
                 else -> null
             }
         }
@@ -808,12 +792,12 @@ class CwaService @Inject constructor(
     private fun getAlertSeverity(headline: String): AlertSeverity {
         return when (headline) {
             // missing severity levels for the following because we are not sure about wording in the API JSON yet
-            // 低溫特報 (嚴寒, 非常寒冷, 寒冷), 高溫資訊 (紅燈, 橙燈, 黃燈)
-            "超大豪雨特報" -> AlertSeverity.EXTREME
-            "大豪雨特報", "海上陸上颱風警報", "陸上颱風警報", "海嘯警報" -> AlertSeverity.SEVERE
-            "豪雨特報", "海上颱風警報", "海嘯警訊" -> AlertSeverity.MODERATE
-            "熱帶性低氣壓特報", "大雨特報", "海嘯消息", "濃霧特報",
-            "長浪即時訊息", "陸上強風特報", "海上強風特報",
+            // ä½Žæº«ç‰¹å ± (åš´å¯’, éžå¸¸å¯’å†·, å¯’å†·), é«˜æº«è³‡è¨Š (ç´…ç‡ˆ, æ©™ç‡ˆ, é»ƒç‡ˆ)
+            "è¶…å¤§è±ªé›¨ç‰¹å ±" -> AlertSeverity.EXTREME
+            "å¤§è±ªé›¨ç‰¹å ±", "æµ·ä¸Šé™¸ä¸Šé¢±é¢¨è­¦å ±", "é™¸ä¸Šé¢±é¢¨è­¦å ±", "æµ·å˜¯è­¦å ±" -> AlertSeverity.SEVERE
+            "è±ªé›¨ç‰¹å ±", "æµ·ä¸Šé¢±é¢¨è­¦å ±", "æµ·å˜¯è­¦è¨Š" -> AlertSeverity.MODERATE
+            "ç†±å¸¶æ€§ä½Žæ°£å£“ç‰¹å ±", "å¤§é›¨ç‰¹å ±", "æµ·å˜¯æ¶ˆæ¯", "æ¿ƒéœ§ç‰¹å ±",
+            "é•·æµªå³æ™‚è¨Šæ¯", "é™¸ä¸Šå¼·é¢¨ç‰¹å ±", "æµ·ä¸Šå¼·é¢¨ç‰¹å ±",
             -> AlertSeverity.MINOR
             else -> AlertSeverity.UNKNOWN
         }
@@ -822,8 +806,8 @@ class CwaService @Inject constructor(
     // Color source: https://www.cwa.gov.tw/V8/assets/css/main.css
     private fun getAlertColor(headline: String, severity: AlertSeverity): Int {
         return when (headline) {
-            "陸上強風特報" -> Color.rgb(230, 229, 98)
-            "濃霧特報" -> Color.rgb(151, 240, 60)
+            "é™¸ä¸Šå¼·é¢¨ç‰¹å ±" -> Color.rgb(230, 229, 98)
+            "æ¿ƒéœ§ç‰¹å ±" -> Color.rgb(151, 240, 60)
             else -> when (severity) {
                 AlertSeverity.EXTREME -> Color.rgb(214, 0, 204)
                 AlertSeverity.SEVERE -> Color.rgb(255, 0, 0)

@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.main.adapters.main
 
 import android.animation.Animator
@@ -298,7 +282,7 @@ class MainAdapter(
         val toCardPosition = cardDisplayList.indexOf(toCard)
 
         if (fromCardPosition == -1 || toCardPosition == -1) {
-            // LogHelper.log(msg = "[Main screen Drag & Drop] Can’t find one of the two cards positions")
+            // LogHelper.log(msg = "[Main screen Drag & Drop] Canâ€™t find one of the two cards positions")
             return false
         }
 

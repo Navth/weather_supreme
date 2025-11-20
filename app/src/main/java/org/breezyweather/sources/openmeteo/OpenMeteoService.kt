@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.openmeteo
 
 import android.content.Context
@@ -119,7 +103,7 @@ class OpenMeteoService @Inject constructor(
     override val continent = SourceContinent.WORLDWIDE
     override val privacyPolicyUrl = "https://open-meteo.com/en/terms#privacy"
 
-    override val locationSearchAttribution = "Open-Meteo (CC BY 4.0) • GeoNames"
+    override val locationSearchAttribution = "Open-Meteo (CC BY 4.0) â€¢ GeoNames"
 
     private val mForecastApi: OpenMeteoForecastApi
         get() {
@@ -144,7 +128,7 @@ class OpenMeteoService @Inject constructor(
         }
 
     private val weatherAttribution = "Open-Meteo (CC BY 4.0)"
-    private val airQualityAttribution = "Open-Meteo (CC BY 4.0) • CAMS ENSEMBLE data provider"
+    private val airQualityAttribution = "Open-Meteo (CC BY 4.0) â€¢ CAMS ENSEMBLE data provider"
     override val supportedFeatures = mapOf(
         SourceFeature.FORECAST to weatherAttribution,
         SourceFeature.CURRENT to weatherAttribution,
@@ -272,7 +256,7 @@ class OpenMeteoService @Inject constructor(
                     it.response()?.errorBody()?.string()
                         ?.contains("No data is available for this location") == true
                 ) {
-                    // Happens when user choose a model that doesn’t cover their location
+                    // Happens when user choose a model that doesnâ€™t cover their location
                     Observable.error(InvalidLocationException())
                 } else {
                     if (SourceFeature.FORECAST in requestedFeatures) {
@@ -848,7 +832,7 @@ class OpenMeteoService @Inject constructor(
                         items(
                             weatherModels,
                             { key ->
-                                // Doesn’t update otherwise
+                                // Doesnâ€™t update otherwise
                                 key.hashCode()
                             }
                         ) { model ->
@@ -956,7 +940,7 @@ class OpenMeteoService @Inject constructor(
         private const val OPEN_METEO_FORECAST_BASE_URL = "https://api.open-meteo.com/"
 
         // Coverage area of CAMS European air quality forecasts:
-        // Europe (west boundary=25.0° W, east=45.0° E, south=30.0° N, north=72.0°)
+        // Europe (west boundary=25.0Â° W, east=45.0Â° E, south=30.0Â° N, north=72.0Â°)
         // Source: https://ads.atmosphere.copernicus.eu/datasets/cams-europe-air-quality-forecasts?tab=overview
         val COPERNICUS_POLLEN_BBOX = LatLngBounds(
             LatLng(30.0, -25.0),

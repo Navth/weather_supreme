@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.settings.compose
 
 import android.app.Activity
@@ -197,7 +181,7 @@ fun AppearanceSettingsScreen(
             }
             smallSeparatorItem()
             switchPreferenceItem(R.string.settings_appearance_dark_mode_locations_title) { id ->
-                // Always “Follow day/night” when selected app dark mode is “Always light”:
+                // Always â€œFollow day/nightâ€ when selected app dark mode is â€œAlways lightâ€:
                 ListPreferenceView(
                     titleId = id,
                     selectedKey = if (darkMode == DarkMode.LIGHT) {

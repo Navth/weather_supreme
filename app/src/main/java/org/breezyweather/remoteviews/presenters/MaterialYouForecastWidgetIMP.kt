@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.remoteviews.presenters
 
 import android.appwidget.AppWidgetManager
@@ -194,11 +178,11 @@ private fun buildRemoteViews(
         R.id.widget_material_you_forecast_aqiOrWind,
         weather.current?.let { current ->
             if (current.airQuality?.isIndexValid == true) {
-                context.getString(R.string.air_quality) + " – " + current.airQuality!!.getName(context)
+                context.getString(R.string.air_quality) + " â€“ " + current.airQuality!!.getName(context)
             } else {
                 current.wind?.let { wind ->
                     wind.getShortDescription(context)?.let {
-                        context.getString(R.string.wind) + " – " + it
+                        context.getString(R.string.wind) + " â€“ " + it
                     }
                 }
             }

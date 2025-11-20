@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.recosante
 
 import android.content.Context
@@ -54,7 +38,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 /**
- * Recosanté pollen service.
+ * RecosantÃ© pollen service.
  */
 class RecosanteService @Inject constructor(
     @ApplicationContext context: Context,
@@ -62,7 +46,7 @@ class RecosanteService @Inject constructor(
 ) : HttpSource(), WeatherSource, PollenIndexSource, LocationParametersSource, ConfigurableSource {
 
     override val id = "recosante"
-    override val name = "Recosanté (${context.currentLocale.getCountryName("FR")})"
+    override val name = "RecosantÃ© (${context.currentLocale.getCountryName("FR")})"
     override val continent = SourceContinent.EUROPE
     override val privacyPolicyUrl = "https://recosante.beta.gouv.fr/donnees-personnelles/"
 
@@ -82,10 +66,10 @@ class RecosanteService @Inject constructor(
         }
 
     override val supportedFeatures = mapOf(
-        SourceFeature.POLLEN to "Recosanté • Atmo France"
+        SourceFeature.POLLEN to "RecosantÃ© â€¢ Atmo France"
     )
     override val attributionLinks = mapOf(
-        "Recosanté" to "https://recosante.beta.gouv.fr/",
+        "RecosantÃ©" to "https://recosante.beta.gouv.fr/",
         "Atmo France" to "https://www.atmo-france.org/"
     )
     override fun isFeatureSupportedForLocation(
@@ -133,7 +117,7 @@ class RecosanteService @Inject constructor(
         result: RecosanteResult,
     ): PollenWrapper? {
         if (result.raep?.indice?.details.isNullOrEmpty()) {
-            // Don’t throw an error if empty or null
+            // Donâ€™t throw an error if empty or null
             // This can happen when the weekly bulletin has not been emitted yet on Friday
             // See also bug #804
             return null

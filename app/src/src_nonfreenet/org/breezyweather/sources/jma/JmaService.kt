@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.jma
 
 import android.content.Context
@@ -255,8 +239,8 @@ class JmaService @Inject constructor(
         val lastKey = currentResult.keys.sortedDescending()[0]
         val lastHourKey = lastKey.substring(0, 10) + "0000"
         var dailyForecast = bulletinResult.text?.trim()
-        if ((dailyForecast ?: "").startsWith("【")) {
-            dailyForecast = dailyForecast?.substringAfter("】")?.trim()
+        if ((dailyForecast ?: "").startsWith("ã€")) {
+            dailyForecast = dailyForecast?.substringAfter("ã€‘")?.trim()
         }
         dailyForecast = dailyForecast?.substringBefore("\n")?.trim()
         return currentResult[lastKey]?.let {
@@ -511,7 +495,7 @@ class JmaService @Inject constructor(
         alertResult.areaTypes?.getOrNull(1)?.areas?.forEach { area ->
             if (area.code == class20s) {
                 area.warnings?.forEach { warning ->
-                    if (warning.status != "発表警報・注意報はなし" && warning.status != "解除") {
+                    if (warning.status != "ç™ºè¡¨è­¦å ±ãƒ»æ³¨æ„å ±ã¯ãªã—" && warning.status != "è§£é™¤") {
                         severity = getAlertSeverity(warning.code)
                         alertList.add(
                             Alert(
@@ -537,21 +521,21 @@ class JmaService @Inject constructor(
         return when (direction) {
             0 -> -1.0
             1 -> 22.5
-            2, "北東" -> 45.0
+            2, "åŒ—æ±" -> 45.0
             3 -> 67.5
-            4, "東" -> 90.0
+            4, "æ±" -> 90.0
             5 -> 112.5
-            6, "南東" -> 135.0
+            6, "å—æ±" -> 135.0
             7 -> 157.5
-            8, "南" -> 180.0
+            8, "å—" -> 180.0
             9 -> 202.5
-            10, "南西" -> 225.0
+            10, "å—è¥¿" -> 225.0
             11 -> 247.5
-            12, "西" -> 270.0
+            12, "è¥¿" -> 270.0
             13 -> 292.5
-            14, "北西" -> 315.0
+            14, "åŒ—è¥¿" -> 315.0
             15 -> 337.5
-            16, "北" -> 0.0
+            16, "åŒ—" -> 0.0
             else -> null
         }
     }
@@ -561,11 +545,11 @@ class JmaService @Inject constructor(
         weather: String?,
     ): String? {
         return when (weather) {
-            "晴れ" -> context.getString(R.string.common_weather_text_clear_sky)
-            "くもり" -> context.getString(R.string.common_weather_text_cloudy)
-            "雨" -> context.getString(R.string.common_weather_text_rain)
-            "雪" -> context.getString(R.string.common_weather_text_snow)
-            "雨または雪" -> context.getString(R.string.common_weather_text_rain_snow_mixed)
+            "æ™´ã‚Œ" -> context.getString(R.string.common_weather_text_clear_sky)
+            "ãã‚‚ã‚Š" -> context.getString(R.string.common_weather_text_cloudy)
+            "é›¨" -> context.getString(R.string.common_weather_text_rain)
+            "é›ª" -> context.getString(R.string.common_weather_text_snow)
+            "é›¨ã¾ãŸã¯é›ª" -> context.getString(R.string.common_weather_text_rain_snow_mixed)
             else -> null
         }
     }
@@ -574,11 +558,11 @@ class JmaService @Inject constructor(
         weather: String?,
     ): WeatherCode? {
         return when (weather) {
-            "晴れ" -> WeatherCode.CLEAR
-            "くもり" -> WeatherCode.CLOUDY
-            "雨" -> WeatherCode.RAIN
-            "雪" -> WeatherCode.SNOW
-            "雨または雪" -> WeatherCode.SLEET
+            "æ™´ã‚Œ" -> WeatherCode.CLEAR
+            "ãã‚‚ã‚Š" -> WeatherCode.CLOUDY
+            "é›¨" -> WeatherCode.RAIN
+            "é›ª" -> WeatherCode.SNOW
+            "é›¨ã¾ãŸã¯é›ª" -> WeatherCode.SLEET
             else -> null
         }
     }
@@ -626,23 +610,23 @@ class JmaService @Inject constructor(
         weather: Int?,
     ): String? {
         return when (weather) {
-            0 -> context.getString(R.string.common_weather_text_clear_sky) // 晴
-            1 -> context.getString(R.string.common_weather_text_cloudy) // 曇
-            2 -> context.getString(R.string.weather_kind_haze) // 煙霧
-            3 -> context.getString(R.string.common_weather_text_fog) // 霧
-            4 -> context.getString(R.string.common_weather_text_rain) // 降水またはしゅう雨性の降水
-            5 -> context.getString(R.string.common_weather_text_drizzle) // 霧雨
-            6 -> context.getString(R.string.common_weather_text_drizzle_freezing) // 着氷性の霧雨
-            7 -> context.getString(R.string.common_weather_text_rain) // 雨
-            8 -> context.getString(R.string.common_weather_text_rain_freezing) // 着氷性の雨
-            9 -> context.getString(R.string.common_weather_text_rain_snow_mixed) // みぞれ
-            10 -> context.getString(R.string.common_weather_text_snow) // 雪
-            11 -> context.getString(R.string.common_weather_text_rain_freezing) // 凍雨
-            12 -> context.getString(R.string.common_weather_text_snow_grains) // 霧雪
-            13 -> context.getString(R.string.common_weather_text_rain_showers) // しゅう雨または止み間のある雨
-            14 -> context.getString(R.string.common_weather_text_snow_showers) // しゅう雪または止み間のある雪
-            15 -> context.getString(R.string.weather_kind_hail) // ひょう
-            16 -> context.getString(R.string.weather_kind_thunderstorm) // 雷
+            0 -> context.getString(R.string.common_weather_text_clear_sky) // æ™´
+            1 -> context.getString(R.string.common_weather_text_cloudy) // æ›‡
+            2 -> context.getString(R.string.weather_kind_haze) // ç…™éœ§
+            3 -> context.getString(R.string.common_weather_text_fog) // éœ§
+            4 -> context.getString(R.string.common_weather_text_rain) // é™æ°´ã¾ãŸã¯ã—ã‚…ã†é›¨æ€§ã®é™æ°´
+            5 -> context.getString(R.string.common_weather_text_drizzle) // éœ§é›¨
+            6 -> context.getString(R.string.common_weather_text_drizzle_freezing) // ç€æ°·æ€§ã®éœ§é›¨
+            7 -> context.getString(R.string.common_weather_text_rain) // é›¨
+            8 -> context.getString(R.string.common_weather_text_rain_freezing) // ç€æ°·æ€§ã®é›¨
+            9 -> context.getString(R.string.common_weather_text_rain_snow_mixed) // ã¿ãžã‚Œ
+            10 -> context.getString(R.string.common_weather_text_snow) // é›ª
+            11 -> context.getString(R.string.common_weather_text_rain_freezing) // å‡é›¨
+            12 -> context.getString(R.string.common_weather_text_snow_grains) // éœ§é›ª
+            13 -> context.getString(R.string.common_weather_text_rain_showers) // ã—ã‚…ã†é›¨ã¾ãŸã¯æ­¢ã¿é–“ã®ã‚ã‚‹é›¨
+            14 -> context.getString(R.string.common_weather_text_snow_showers) // ã—ã‚…ã†é›ªã¾ãŸã¯æ­¢ã¿é–“ã®ã‚ã‚‹é›ª
+            15 -> context.getString(R.string.weather_kind_hail) // ã²ã‚‡ã†
+            16 -> context.getString(R.string.weather_kind_thunderstorm) // é›·
             else -> null
         }
     }
@@ -669,36 +653,36 @@ class JmaService @Inject constructor(
         code: String?,
     ): String? {
         return when (code) {
-            "33" -> context.getString(R.string.jma_warning_text_heavy_rain_emergency) // 大雨特別警報
-            "03" -> context.getString(R.string.jma_warning_text_heavy_rain_warning) // 大雨警報
-            "10" -> context.getString(R.string.jma_warning_text_heavy_rain_advisory) // 大雨注意報
-            "04" -> context.getString(R.string.jma_warning_text_flood_warning) // 洪水警報
-            "18" -> context.getString(R.string.jma_warning_text_flood_advisory) // 洪水注意報
-            "35" -> context.getString(R.string.jma_warning_text_storm_emergency) // 暴風特別警報
-            "05" -> context.getString(R.string.jma_warning_text_storm_warning) // 暴風警報
-            "15" -> context.getString(R.string.jma_warning_text_gale_advisory) // 強風注意報
-            "32" -> context.getString(R.string.jma_warning_text_snowstorm_emergency) // 暴風雪特別警報
-            "02" -> context.getString(R.string.jma_warning_text_snowstorm_warning) // 暴風雪警報
-            "13" -> context.getString(R.string.jma_warning_text_gale_and_snow_advisory) // 風雪注意報
-            "36" -> context.getString(R.string.jma_warning_text_heavy_snow_emergency) // 大雪特別警報
-            "06" -> context.getString(R.string.jma_warning_text_heavy_snow_warning) // 大雪警報
-            "12" -> context.getString(R.string.jma_warning_text_heavy_snow_advisory) // 大雪注意報
-            "37" -> context.getString(R.string.jma_warning_text_high_wave_emergency) // 波浪特別警報
-            "07" -> context.getString(R.string.jma_warning_text_high_wave_warning) // 波浪警報
-            "16" -> context.getString(R.string.jma_warning_text_high_wave_advisory) // 波浪注意報
-            "38" -> context.getString(R.string.jma_warning_text_storm_surge_emergency) // 高潮特別警報
-            "08" -> context.getString(R.string.jma_warning_text_storm_surge_warning) // 高潮警報
-            "19+" -> context.getString(R.string.jma_warning_text_storm_surge_advisory) // 高潮注意報
-            "19" -> context.getString(R.string.jma_warning_text_storm_surge_advisory) // 高潮注意報
-            "14" -> context.getString(R.string.jma_warning_text_thunderstorm_advisory) // 雷注意報
-            "17" -> context.getString(R.string.jma_warning_text_snow_melting_advisory) // 融雪注意報
-            "20" -> context.getString(R.string.jma_warning_text_dense_fog_advisory) // 濃霧注意報
-            "21" -> context.getString(R.string.jma_warning_text_dry_air_advisory) // 乾燥注意報
-            "22" -> context.getString(R.string.jma_warning_text_avalanche_advisory) // なだれ注意報
-            "23" -> context.getString(R.string.jma_warning_text_low_temperature_advisory) // 低温注意報
-            "24" -> context.getString(R.string.jma_warning_text_frost_advisory) // 霜注意報
-            "25" -> context.getString(R.string.jma_warning_text_ice_accretion_advisory) // 着氷注意報
-            "26" -> context.getString(R.string.jma_warning_text_snow_accretion_advisory) // 着雪注意報
+            "33" -> context.getString(R.string.jma_warning_text_heavy_rain_emergency) // å¤§é›¨ç‰¹åˆ¥è­¦å ±
+            "03" -> context.getString(R.string.jma_warning_text_heavy_rain_warning) // å¤§é›¨è­¦å ±
+            "10" -> context.getString(R.string.jma_warning_text_heavy_rain_advisory) // å¤§é›¨æ³¨æ„å ±
+            "04" -> context.getString(R.string.jma_warning_text_flood_warning) // æ´ªæ°´è­¦å ±
+            "18" -> context.getString(R.string.jma_warning_text_flood_advisory) // æ´ªæ°´æ³¨æ„å ±
+            "35" -> context.getString(R.string.jma_warning_text_storm_emergency) // æš´é¢¨ç‰¹åˆ¥è­¦å ±
+            "05" -> context.getString(R.string.jma_warning_text_storm_warning) // æš´é¢¨è­¦å ±
+            "15" -> context.getString(R.string.jma_warning_text_gale_advisory) // å¼·é¢¨æ³¨æ„å ±
+            "32" -> context.getString(R.string.jma_warning_text_snowstorm_emergency) // æš´é¢¨é›ªç‰¹åˆ¥è­¦å ±
+            "02" -> context.getString(R.string.jma_warning_text_snowstorm_warning) // æš´é¢¨é›ªè­¦å ±
+            "13" -> context.getString(R.string.jma_warning_text_gale_and_snow_advisory) // é¢¨é›ªæ³¨æ„å ±
+            "36" -> context.getString(R.string.jma_warning_text_heavy_snow_emergency) // å¤§é›ªç‰¹åˆ¥è­¦å ±
+            "06" -> context.getString(R.string.jma_warning_text_heavy_snow_warning) // å¤§é›ªè­¦å ±
+            "12" -> context.getString(R.string.jma_warning_text_heavy_snow_advisory) // å¤§é›ªæ³¨æ„å ±
+            "37" -> context.getString(R.string.jma_warning_text_high_wave_emergency) // æ³¢æµªç‰¹åˆ¥è­¦å ±
+            "07" -> context.getString(R.string.jma_warning_text_high_wave_warning) // æ³¢æµªè­¦å ±
+            "16" -> context.getString(R.string.jma_warning_text_high_wave_advisory) // æ³¢æµªæ³¨æ„å ±
+            "38" -> context.getString(R.string.jma_warning_text_storm_surge_emergency) // é«˜æ½®ç‰¹åˆ¥è­¦å ±
+            "08" -> context.getString(R.string.jma_warning_text_storm_surge_warning) // é«˜æ½®è­¦å ±
+            "19+" -> context.getString(R.string.jma_warning_text_storm_surge_advisory) // é«˜æ½®æ³¨æ„å ±
+            "19" -> context.getString(R.string.jma_warning_text_storm_surge_advisory) // é«˜æ½®æ³¨æ„å ±
+            "14" -> context.getString(R.string.jma_warning_text_thunderstorm_advisory) // é›·æ³¨æ„å ±
+            "17" -> context.getString(R.string.jma_warning_text_snow_melting_advisory) // èžé›ªæ³¨æ„å ±
+            "20" -> context.getString(R.string.jma_warning_text_dense_fog_advisory) // æ¿ƒéœ§æ³¨æ„å ±
+            "21" -> context.getString(R.string.jma_warning_text_dry_air_advisory) // ä¹¾ç‡¥æ³¨æ„å ±
+            "22" -> context.getString(R.string.jma_warning_text_avalanche_advisory) // ãªã ã‚Œæ³¨æ„å ±
+            "23" -> context.getString(R.string.jma_warning_text_low_temperature_advisory) // ä½Žæ¸©æ³¨æ„å ±
+            "24" -> context.getString(R.string.jma_warning_text_frost_advisory) // éœœæ³¨æ„å ±
+            "25" -> context.getString(R.string.jma_warning_text_ice_accretion_advisory) // ç€æ°·æ³¨æ„å ±
+            "26" -> context.getString(R.string.jma_warning_text_snow_accretion_advisory) // ç€é›ªæ³¨æ„å ±
             else -> null
         }
     }
@@ -786,10 +770,10 @@ class JmaService @Inject constructor(
             // Split the city and district strings if necessary
             if (Regex("""^\d{6}[^0]$""").matches(code)) {
                 if (context.currentLocale.code.startsWith("ja")) {
-                    val matchResult = Regex("""^(.+[市町村])（?([^（^）]*)）?$""").find(city)!!
+                    val matchResult = Regex("""^(.+[å¸‚ç”ºæ‘])ï¼ˆ?([^ï¼ˆ^ï¼‰]*)ï¼‰?$""").find(city)!!
                     city = matchResult.groups[1]!!.value
                     district = matchResult.groups[2]!!.value
-                    if (Regex("""を除く$""").matches(district)) {
+                    if (Regex("""ã‚’é™¤ã$""").matches(district)) {
                         district = null
                     }
                 } else {
@@ -826,106 +810,106 @@ class JmaService @Inject constructor(
         if (context.currentLocale.code.startsWith("ja")) {
             return with(code) {
                 when {
-                    startsWith("01") -> "北海道" // Hokkaido
-                    startsWith("02") -> "青森県" // Aomori
-                    startsWith("03") -> "岩手県" // Iwate
-                    startsWith("04") -> "宮城県" // Miyagi
-                    startsWith("05") -> "秋田県" // Akita
-                    startsWith("06") -> "山形県" // Yamagata
-                    startsWith("07") -> "福島県" // Fukushima
-                    startsWith("08") -> "茨城県" // Ibaraki
-                    startsWith("09") -> "栃木県" // Tochigi
-                    startsWith("10") -> "群馬県" // Gunma
-                    startsWith("11") -> "埼玉県" // Saitama
-                    startsWith("12") -> "千葉県" // Chiba
-                    startsWith("13") -> "東京都" // Tōkyō
-                    startsWith("14") -> "神奈川県" // Kanagawa
-                    startsWith("15") -> "新潟県" // Niigata
-                    startsWith("16") -> "富山県" // Toyama
-                    startsWith("17") -> "石川県" // Ishikawa
-                    startsWith("18") -> "福井県" // Fukui
-                    startsWith("19") -> "山梨県" // Yamanashi
-                    startsWith("20") -> "長野県" // Nagano
-                    startsWith("21") -> "岐阜県" // Gifu
-                    startsWith("22") -> "静岡県" // Shizuoka
-                    startsWith("23") -> "愛知県" // Aichi
-                    startsWith("24") -> "三重県" // Mie
-                    startsWith("25") -> "滋賀県" // Shiga
-                    startsWith("26") -> "京都府" // Kyōto
-                    startsWith("27") -> "大阪府" // Ōsaka
-                    startsWith("28") -> "兵庫県" // Hyōgo
-                    startsWith("29") -> "奈良県" // Nara
-                    startsWith("30") -> "和歌山県" // Wakayama
-                    startsWith("31") -> "鳥取県" // Tottori
-                    startsWith("32") -> "島根県" // Shimane
-                    startsWith("33") -> "岡山県" // Okayama
-                    startsWith("34") -> "広島県" // Hiroshima
-                    startsWith("35") -> "山口県" // Yamaguchi
-                    startsWith("36") -> "徳島県" // Tokushima
-                    startsWith("37") -> "香川県" // Kagawa
-                    startsWith("38") -> "愛媛県" // Ehime
-                    startsWith("39") -> "高知県" // Kōchi
-                    startsWith("40") -> "福岡県" // Fukuoka
-                    startsWith("41") -> "佐賀県" // Saga
-                    startsWith("42") -> "長崎県" // Nagasaki
-                    startsWith("43") -> "熊本県" // Kumamoto
-                    startsWith("44") -> "大分県" // Ōita
-                    startsWith("45") -> "宮崎県" // Miyazaki
-                    startsWith("46") -> "鹿児島県" // Kagoshima
-                    startsWith("47") -> "沖縄県" // Okinawa
+                    startsWith("01") -> "åŒ—æµ·é“" // Hokkaido
+                    startsWith("02") -> "é’æ£®çœŒ" // Aomori
+                    startsWith("03") -> "å²©æ‰‹çœŒ" // Iwate
+                    startsWith("04") -> "å®®åŸŽçœŒ" // Miyagi
+                    startsWith("05") -> "ç§‹ç”°çœŒ" // Akita
+                    startsWith("06") -> "å±±å½¢çœŒ" // Yamagata
+                    startsWith("07") -> "ç¦å³¶çœŒ" // Fukushima
+                    startsWith("08") -> "èŒ¨åŸŽçœŒ" // Ibaraki
+                    startsWith("09") -> "æ ƒæœ¨çœŒ" // Tochigi
+                    startsWith("10") -> "ç¾¤é¦¬çœŒ" // Gunma
+                    startsWith("11") -> "åŸ¼çŽ‰çœŒ" // Saitama
+                    startsWith("12") -> "åƒè‘‰çœŒ" // Chiba
+                    startsWith("13") -> "æ±äº¬éƒ½" // TÅkyÅ
+                    startsWith("14") -> "ç¥žå¥ˆå·çœŒ" // Kanagawa
+                    startsWith("15") -> "æ–°æ½ŸçœŒ" // Niigata
+                    startsWith("16") -> "å¯Œå±±çœŒ" // Toyama
+                    startsWith("17") -> "çŸ³å·çœŒ" // Ishikawa
+                    startsWith("18") -> "ç¦äº•çœŒ" // Fukui
+                    startsWith("19") -> "å±±æ¢¨çœŒ" // Yamanashi
+                    startsWith("20") -> "é•·é‡ŽçœŒ" // Nagano
+                    startsWith("21") -> "å²é˜œçœŒ" // Gifu
+                    startsWith("22") -> "é™å²¡çœŒ" // Shizuoka
+                    startsWith("23") -> "æ„›çŸ¥çœŒ" // Aichi
+                    startsWith("24") -> "ä¸‰é‡çœŒ" // Mie
+                    startsWith("25") -> "æ»‹è³€çœŒ" // Shiga
+                    startsWith("26") -> "äº¬éƒ½åºœ" // KyÅto
+                    startsWith("27") -> "å¤§é˜ªåºœ" // ÅŒsaka
+                    startsWith("28") -> "å…µåº«çœŒ" // HyÅgo
+                    startsWith("29") -> "å¥ˆè‰¯çœŒ" // Nara
+                    startsWith("30") -> "å’Œæ­Œå±±çœŒ" // Wakayama
+                    startsWith("31") -> "é³¥å–çœŒ" // Tottori
+                    startsWith("32") -> "å³¶æ ¹çœŒ" // Shimane
+                    startsWith("33") -> "å²¡å±±çœŒ" // Okayama
+                    startsWith("34") -> "åºƒå³¶çœŒ" // Hiroshima
+                    startsWith("35") -> "å±±å£çœŒ" // Yamaguchi
+                    startsWith("36") -> "å¾³å³¶çœŒ" // Tokushima
+                    startsWith("37") -> "é¦™å·çœŒ" // Kagawa
+                    startsWith("38") -> "æ„›åª›çœŒ" // Ehime
+                    startsWith("39") -> "é«˜çŸ¥çœŒ" // KÅchi
+                    startsWith("40") -> "ç¦å²¡çœŒ" // Fukuoka
+                    startsWith("41") -> "ä½è³€çœŒ" // Saga
+                    startsWith("42") -> "é•·å´ŽçœŒ" // Nagasaki
+                    startsWith("43") -> "ç†Šæœ¬çœŒ" // Kumamoto
+                    startsWith("44") -> "å¤§åˆ†çœŒ" // ÅŒita
+                    startsWith("45") -> "å®®å´ŽçœŒ" // Miyazaki
+                    startsWith("46") -> "é¹¿å…å³¶çœŒ" // Kagoshima
+                    startsWith("47") -> "æ²–ç¸„çœŒ" // Okinawa
                     else -> null
                 }
             }
         } else {
             return with(code) {
                 when {
-                    startsWith("01") -> "Hokkaido" // 北海道
-                    startsWith("02") -> "Aomori" // 青森県
-                    startsWith("03") -> "Iwate" // 岩手県
-                    startsWith("04") -> "Miyagi" // 宮城県
-                    startsWith("05") -> "Akita" // 秋田県
-                    startsWith("06") -> "Yamagata" // 山形県
-                    startsWith("07") -> "Fukushima" // 福島県
-                    startsWith("08") -> "Ibaraki" // 茨城県
-                    startsWith("09") -> "Tochigi" // 栃木県
-                    startsWith("10") -> "Gunma" // 群馬県
-                    startsWith("11") -> "Saitama" // 埼玉県
-                    startsWith("12") -> "Chiba" // 千葉県
-                    startsWith("13") -> "Tōkyō" // 東京都
-                    startsWith("14") -> "Kanagawa" // 神奈川県
-                    startsWith("15") -> "Niigata" // 新潟県
-                    startsWith("16") -> "Toyama" // 富山県
-                    startsWith("17") -> "Ishikawa" // 石川県
-                    startsWith("18") -> "Fukui" // 福井県
-                    startsWith("19") -> "Yamanashi" // 山梨県
-                    startsWith("20") -> "Nagano" // 長野県
-                    startsWith("21") -> "Gifu" // 岐阜県
-                    startsWith("22") -> "Shizuoka" // 静岡県
-                    startsWith("23") -> "Aichi" // 愛知県
-                    startsWith("24") -> "Mie" // 三重県
-                    startsWith("25") -> "Shiga" // 滋賀県
-                    startsWith("26") -> "Kyōto" // 京都府
-                    startsWith("27") -> "Ōsaka" // 大阪府
-                    startsWith("28") -> "Hyōgo" // 兵庫県
-                    startsWith("29") -> "Nara" // 奈良県
-                    startsWith("30") -> "Wakayama" // 和歌山県
-                    startsWith("31") -> "Tottori" // 鳥取県
-                    startsWith("32") -> "Shimane" // 島根県
-                    startsWith("33") -> "Okayama" // 岡山県
-                    startsWith("34") -> "Hiroshima" // 広島県
-                    startsWith("35") -> "Yamaguchi" // 山口県
-                    startsWith("36") -> "Tokushima" // 徳島県
-                    startsWith("37") -> "Kagawa" // 香川県
-                    startsWith("38") -> "Ehime" // 愛媛県
-                    startsWith("39") -> "Kōchi" // 高知県
-                    startsWith("40") -> "Fukuoka" // 福岡県
-                    startsWith("41") -> "Saga" // 佐賀県
-                    startsWith("42") -> "Nagasaki" // 長崎県
-                    startsWith("43") -> "Kumamoto" // 熊本県
-                    startsWith("44") -> "Ōita" // 大分県
-                    startsWith("45") -> "Miyazaki" // 宮崎県
-                    startsWith("46") -> "Kagoshima" // 鹿児島県
-                    startsWith("47") -> "Okinawa" // 沖縄県
+                    startsWith("01") -> "Hokkaido" // åŒ—æµ·é“
+                    startsWith("02") -> "Aomori" // é’æ£®çœŒ
+                    startsWith("03") -> "Iwate" // å²©æ‰‹çœŒ
+                    startsWith("04") -> "Miyagi" // å®®åŸŽçœŒ
+                    startsWith("05") -> "Akita" // ç§‹ç”°çœŒ
+                    startsWith("06") -> "Yamagata" // å±±å½¢çœŒ
+                    startsWith("07") -> "Fukushima" // ç¦å³¶çœŒ
+                    startsWith("08") -> "Ibaraki" // èŒ¨åŸŽçœŒ
+                    startsWith("09") -> "Tochigi" // æ ƒæœ¨çœŒ
+                    startsWith("10") -> "Gunma" // ç¾¤é¦¬çœŒ
+                    startsWith("11") -> "Saitama" // åŸ¼çŽ‰çœŒ
+                    startsWith("12") -> "Chiba" // åƒè‘‰çœŒ
+                    startsWith("13") -> "TÅkyÅ" // æ±äº¬éƒ½
+                    startsWith("14") -> "Kanagawa" // ç¥žå¥ˆå·çœŒ
+                    startsWith("15") -> "Niigata" // æ–°æ½ŸçœŒ
+                    startsWith("16") -> "Toyama" // å¯Œå±±çœŒ
+                    startsWith("17") -> "Ishikawa" // çŸ³å·çœŒ
+                    startsWith("18") -> "Fukui" // ç¦äº•çœŒ
+                    startsWith("19") -> "Yamanashi" // å±±æ¢¨çœŒ
+                    startsWith("20") -> "Nagano" // é•·é‡ŽçœŒ
+                    startsWith("21") -> "Gifu" // å²é˜œçœŒ
+                    startsWith("22") -> "Shizuoka" // é™å²¡çœŒ
+                    startsWith("23") -> "Aichi" // æ„›çŸ¥çœŒ
+                    startsWith("24") -> "Mie" // ä¸‰é‡çœŒ
+                    startsWith("25") -> "Shiga" // æ»‹è³€çœŒ
+                    startsWith("26") -> "KyÅto" // äº¬éƒ½åºœ
+                    startsWith("27") -> "ÅŒsaka" // å¤§é˜ªåºœ
+                    startsWith("28") -> "HyÅgo" // å…µåº«çœŒ
+                    startsWith("29") -> "Nara" // å¥ˆè‰¯çœŒ
+                    startsWith("30") -> "Wakayama" // å’Œæ­Œå±±çœŒ
+                    startsWith("31") -> "Tottori" // é³¥å–çœŒ
+                    startsWith("32") -> "Shimane" // å³¶æ ¹çœŒ
+                    startsWith("33") -> "Okayama" // å²¡å±±çœŒ
+                    startsWith("34") -> "Hiroshima" // åºƒå³¶çœŒ
+                    startsWith("35") -> "Yamaguchi" // å±±å£çœŒ
+                    startsWith("36") -> "Tokushima" // å¾³å³¶çœŒ
+                    startsWith("37") -> "Kagawa" // é¦™å·çœŒ
+                    startsWith("38") -> "Ehime" // æ„›åª›çœŒ
+                    startsWith("39") -> "KÅchi" // é«˜çŸ¥çœŒ
+                    startsWith("40") -> "Fukuoka" // ç¦å²¡çœŒ
+                    startsWith("41") -> "Saga" // ä½è³€çœŒ
+                    startsWith("42") -> "Nagasaki" // é•·å´ŽçœŒ
+                    startsWith("43") -> "Kumamoto" // ç†Šæœ¬çœŒ
+                    startsWith("44") -> "ÅŒita" // å¤§åˆ†çœŒ
+                    startsWith("45") -> "Miyazaki" // å®®å´ŽçœŒ
+                    startsWith("46") -> "Kagoshima" // é¹¿å…å³¶çœŒ
+                    startsWith("47") -> "Okinawa" // æ²–ç¸„çœŒ
                     else -> null
                 }
             }

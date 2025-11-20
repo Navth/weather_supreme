@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.ncdr
 
 import android.content.Context
@@ -76,7 +60,7 @@ class NcdrService @Inject constructor(
             return Observable.error(WeatherException())
         }
 
-        val cwaAlerts = alerts.entries?.filter { it.author.name.value == "中央氣象署" }
+        val cwaAlerts = alerts.entries?.filter { it.author.name.value == "ä¸­å¤®æ°£è±¡ç½²" }
         if (cwaAlerts.isNullOrEmpty()) {
             return Observable.just(WeatherWrapper())
         }
@@ -122,12 +106,12 @@ class NcdrService @Inject constructor(
                         var headline = it.headline?.value?.trim()
 
                         // For Extremely Heavy Rain Advisories, replace the headline with severity level.
-                        if (headline == "豪雨特報") {
+                        if (headline == "è±ªé›¨ç‰¹å ±") {
                             val severityLevel = it.parameters?.firstOrNull { parameter ->
                                 parameter.valueName?.value == "severity_level"
                             }?.value?.value
                             if (!severityLevel.isNullOrEmpty()) {
-                                headline = severityLevel + "特報"
+                                headline = severityLevel + "ç‰¹å ±"
                             }
                         }
 

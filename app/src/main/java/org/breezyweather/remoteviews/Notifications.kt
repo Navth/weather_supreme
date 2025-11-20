@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.remoteviews
 
 import android.annotation.SuppressLint
@@ -51,8 +35,8 @@ import java.text.DateFormat
 
 object Notifications {
 
-    // We only have one group as we don’t have many channels
-    // We name it “Breezy Weather” as LeakCanary also has its own group
+    // We only have one group as we donâ€™t have many channels
+    // We name it â€œBreezy Weatherâ€ as LeakCanary also has its own group
     private const val GROUP_BREEZY_WEATHER = "group_breezy_weather"
 
     private const val CHANNEL_ALERT = "alert"
@@ -99,7 +83,7 @@ object Notifications {
     )
 
     /**
-     * Initialize channels so that the user can disable them, even if didn’t receive a notification yet
+     * Initialize channels so that the user can disable them, even if didnâ€™t receive a notification yet
      */
     fun createChannels(context: Context) {
         val notificationManager = NotificationManagerCompat.from(context)

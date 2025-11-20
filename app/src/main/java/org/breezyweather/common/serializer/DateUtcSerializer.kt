@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.common.serializer
 
 import kotlinx.serialization.KSerializer
@@ -56,7 +40,7 @@ object DateUtcSerializer : KSerializer<Date?> {
                 return jsonValue.toDateNoHour(timeZone)?.toCalendarWithTimeZone(timeZone)?.apply {
                     set(Calendar.HOUR_OF_DAY, jsonValue.substring(11, 13).toInt())
                     set(Calendar.MINUTE, jsonValue.substring(14, 16).toInt())
-                    // We could add parsing of second but not really useful, let’s be efficient
+                    // We could add parsing of second but not really useful, letâ€™s be efficient
                 }?.time
             }
         } catch (e: ParseException) {

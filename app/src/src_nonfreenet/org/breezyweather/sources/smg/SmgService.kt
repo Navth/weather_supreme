@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.smg
 
 import android.content.Context
@@ -256,8 +240,8 @@ class SmgService @Inject constructor(
         currentResult.Weather?.Custom?.getOrNull(0)?.WeatherReport?.forEach { report ->
             // SMG has not released the coordinates of its various monitoring stations.
             // Therefore we default to "Taipa Grande" which is SMG's office location.
-            // This is fine because Macao has a land area of just 32.9km²,
-            // which is one-third the size of the forecast grid of most other countries (c. 100km²).
+            // This is fine because Macao has a land area of just 32.9kmÂ²,
+            // which is one-third the size of the forecast grid of most other countries (c. 100kmÂ²).
             // TODO: Once we have more intel on the coordinates of the stations, we can locate the nearest one.
             report.station?.getOrNull(0)?.takeIf { it.stationname?.getOrNull(0) == "TAIPA GRANDE" }?.let {
                 current = CurrentWrapper(
@@ -380,8 +364,8 @@ class SmgService @Inject constructor(
         val source by lazy {
             with(context.currentLocale.code) {
                 when {
-                    startsWith("zh") -> "地球物理氣象局"
-                    startsWith("pt") -> "Direcção dos Serviços Meteorológicos e Geofísicos"
+                    startsWith("zh") -> "åœ°çƒç‰©ç†æ°£è±¡å±€"
+                    startsWith("pt") -> "DirecÃ§Ã£o dos ServiÃ§os MeteorolÃ³gicos e GeofÃ­sicos"
                     else -> "Macao Meteorological and Geophysical Bureau"
                 }
             }
@@ -556,7 +540,7 @@ class SmgService @Inject constructor(
     }
 
     // Mean max and mean min temperatures for each month from 1991 to 2020.
-    // Hard-coded since Macao has a land area of just 32.9km²,
+    // Hard-coded since Macao has a land area of just 32.9kmÂ²,
     // and there are only records for SMG's main office in Taipa Grande.
     // Source: https://www.smg.gov.mo/en/subpage/348/page/252
     private fun getNormals(): Map<Month, Normals> {

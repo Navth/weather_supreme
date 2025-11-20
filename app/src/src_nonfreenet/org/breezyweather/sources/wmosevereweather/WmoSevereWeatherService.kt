@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.wmosevereweather
 
 import android.content.Context
@@ -54,17 +38,17 @@ class WmoSevereWeatherService @Inject constructor(
         with(context.currentLocale.code) {
             when {
                 // Missing arabic abbreviation for WMO
-                startsWith("ar") -> "WMO مركز معلومات الطقس القاسي"
+                startsWith("ar") -> "WMO Ù…Ø±ÙƒØ² Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø·Ù‚Ø³ Ø§Ù„Ù‚Ø§Ø³ÙŠ"
                 startsWith("eo") -> "MOM Severe Weather Information Centre"
-                startsWith("es") -> "OMM Centro de Información de Tiempo Severo"
-                startsWith("fr") -> "OMM Centre d’Information des Phénomènes Dangereux"
+                startsWith("es") -> "OMM Centro de InformaciÃ³n de Tiempo Severo"
+                startsWith("fr") -> "OMM Centre dâ€™Information des PhÃ©nomÃ¨nes Dangereux"
                 startsWith("it") -> "OMM Eventi Meteorologici Estremi"
-                startsWith("ko") -> "WMO 위험기상정보센터"
-                startsWith("pl") -> "WMO Centrum Informacji o Groźnych Zjawiskach Pogodowych"
-                startsWith("pt") -> "OMM Centro de Informação Tempo Severo"
-                startsWith("ru") -> "ВМО Информационный центр неблагоприятных погодных условий"
-                equals("zh-tw") || equals("zh-hk") || equals("zh-mo") -> "世界氣象組織惡劣天氣信息中心"
-                startsWith("zh") -> "世界气象组织恶劣天气信息中心"
+                startsWith("ko") -> "WMO ìœ„í—˜ê¸°ìƒì •ë³´ì„¼í„°"
+                startsWith("pl") -> "WMO Centrum Informacji o GroÅºnych Zjawiskach Pogodowych"
+                startsWith("pt") -> "OMM Centro de InformaÃ§Ã£o Tempo Severo"
+                startsWith("ru") -> "Ð’ÐœÐž Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¾Ð½Ð½Ñ‹Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€ Ð½ÐµÐ±Ð»Ð°Ð³Ð¾Ð¿Ñ€Ð¸ÑÑ‚Ð½Ñ‹Ñ… Ð¿Ð¾Ð³Ð¾Ð´Ð½Ñ‹Ñ… ÑƒÑÐ»Ð¾Ð²Ð¸Ð¹"
+                equals("zh-tw") || equals("zh-hk") || equals("zh-mo") -> "ä¸–ç•Œæ°£è±¡çµ„ç¹”æƒ¡åŠ£å¤©æ°£ä¿¡æ¯ä¸­å¿ƒ"
+                startsWith("zh") -> "ä¸–ç•Œæ°”è±¡ç»„ç»‡æ¶åŠ£å¤©æ°”ä¿¡æ¯ä¸­å¿ƒ"
                 else -> "WMO Severe Weather Information Centre"
             }
         }
@@ -120,7 +104,7 @@ class WmoSevereWeatherService @Inject constructor(
         return alertResult.features
             ?.filter {
                 it.properties != null
-                // Don’t filter based on expiration here as the actual CAP file may contain an updated expiration date!
+                // Donâ€™t filter based on expiration here as the actual CAP file may contain an updated expiration date!
                 // && (it.properties.expires == null || it.properties.expires > Date())
             }?.map {
                 val severity = AlertSeverity.getInstance(it.properties!!.s)
@@ -171,7 +155,7 @@ class WmoSevereWeatherService @Inject constructor(
                         originalAlert
                     } else {
                         // "else" case from urlToLoad
-                        // The only way to know which URL contains which language… is to load
+                        // The only way to know which URL contains which languageâ€¦ is to load
                         // both URL. Source: https://severeweather.wmo.int/js/new-layout.js
                         val capurlAlert = client.getAlert("v2/cap-alerts/${it.properties.capurl}").execute().body()
                         val rlinkAlert = client.getAlert("v2/cap-alerts/${it.properties.rlink}").execute().body()

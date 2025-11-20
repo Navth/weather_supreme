@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.cwa
 
 import android.content.Context
@@ -54,7 +38,7 @@ abstract class CwaServiceStub(context: Context) :
     override val name by lazy {
         with(context.currentLocale.code) {
             when {
-                startsWith("zh") -> "中央氣象署"
+                startsWith("zh") -> "ä¸­å¤®æ°£è±¡ç½²"
                 else -> "CWA"
             }
         } +
@@ -65,7 +49,7 @@ abstract class CwaServiceStub(context: Context) :
     protected val weatherAttribution by lazy {
         with(context.currentLocale.code) {
             when {
-                startsWith("zh") -> "中央氣象署"
+                startsWith("zh") -> "ä¸­å¤®æ°£è±¡ç½²"
                 else -> "Central Weather Administration"
             }
         }
@@ -73,7 +57,7 @@ abstract class CwaServiceStub(context: Context) :
     protected val airQualityAttribution by lazy {
         with(context.currentLocale.code) {
             when {
-                startsWith("zh") -> "環境部"
+                startsWith("zh") -> "ç’°å¢ƒéƒ¨"
                 else -> "Ministry of Environment"
             }
         }
@@ -81,7 +65,7 @@ abstract class CwaServiceStub(context: Context) :
     protected val reverseGeocodingAttribution by lazy {
         with(context.currentLocale.code) {
             when {
-                startsWith("zh") -> "內政部國土測繪中心"
+                startsWith("zh") -> "å…§æ”¿éƒ¨åœ‹åœŸæ¸¬ç¹ªä¸­å¿ƒ"
                 else -> "National Land Survey and Mapping Center"
             }
         }

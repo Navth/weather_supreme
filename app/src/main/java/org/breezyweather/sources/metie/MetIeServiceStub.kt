@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.metie
 
 import android.content.Context
@@ -45,7 +29,7 @@ abstract class MetIeServiceStub(context: Context) :
 
     override val id = "metie"
     private val countryName = context.currentLocale.getCountryName("IE")
-    override val name = "MET Éireann".let {
+    override val name = "MET Ã‰ireann".let {
         if (it.contains(countryName)) {
             it
         } else {
@@ -55,8 +39,8 @@ abstract class MetIeServiceStub(context: Context) :
     override val continent = SourceContinent.EUROPE
 
     // Terms require: copyright + source + license (with link) + disclaimer + mention of modified data
-    private val weatherAttribution = "Copyright Met Éireann. Source met.ie. This data is published under a " +
-        "Commons Attribution 4.0 International (CC BY 4.0). Met Éireann does not accept any liability whatsoever " +
+    private val weatherAttribution = "Copyright Met Ã‰ireann. Source met.ie. This data is published under a " +
+        "Commons Attribution 4.0 International (CC BY 4.0). Met Ã‰ireann does not accept any liability whatsoever " +
         "for any error or omission in the data, their availability, or for any loss or damage arising from their " +
         "use. ${context.getString(R.string.data_modified, context.getString(R.string.breezy_weather))}"
     override val supportedFeatures = mapOf(

@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.geosphereat.json
 
 import kotlinx.serialization.SerialName
@@ -24,9 +8,9 @@ data class GeoSphereAtHourlyParameters(
     // Hourly
     val sy: GeoSphereAtHourlyDoubleParameter?, // Always integer but formatted as a double
     val t2m: GeoSphereAtHourlyDoubleParameter?,
-    @SerialName("rr_acc") val rrAcc: GeoSphereAtHourlyDoubleParameter?, // kg m²
-    @SerialName("rain_acc") val rainAcc: GeoSphereAtHourlyDoubleParameter?, // kg m²
-    @SerialName("snow_acc") val snowAcc: GeoSphereAtHourlyDoubleParameter?, // kg m²
+    @SerialName("rr_acc") val rrAcc: GeoSphereAtHourlyDoubleParameter?, // kg mÂ²
+    @SerialName("rain_acc") val rainAcc: GeoSphereAtHourlyDoubleParameter?, // kg mÂ²
+    @SerialName("snow_acc") val snowAcc: GeoSphereAtHourlyDoubleParameter?, // kg mÂ²
     val u10m: GeoSphereAtHourlyDoubleParameter?, // m/s
     val ugust: GeoSphereAtHourlyDoubleParameter?, // m/s
     val v10m: GeoSphereAtHourlyDoubleParameter?, // m/s
@@ -36,7 +20,7 @@ data class GeoSphereAtHourlyParameters(
     val sp: GeoSphereAtHourlyDoubleParameter?, // Pa
 
     // Nowcast
-    val rr: GeoSphereAtHourlyDoubleParameter?, // kg m²
+    val rr: GeoSphereAtHourlyDoubleParameter?, // kg mÂ²
 
     // Air quality
     val pm25surf: GeoSphereAtHourlyDoubleParameter?, // ug m-3

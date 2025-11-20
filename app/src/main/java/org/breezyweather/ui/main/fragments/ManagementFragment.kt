@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.main.fragments
 
 import android.Manifest
@@ -189,7 +173,7 @@ open class ManagementFragment : MainModuleFragment(), TouchReactor {
         /*
          * We should add a scroll behavior to make the top bar change color when scrolling, but
          * as we mix ComposeView and XML views, this leads to stuttering in scrolling.
-         * Implement it later once we replace the RecyclerView as a LazyList. It’s not an easy
+         * Implement it later once we replace the RecyclerView as a LazyList. Itâ€™s not an easy
          * task as we need to implement drag & drop and swipe left/right
          */
         Material3Scaffold(
@@ -328,7 +312,7 @@ open class ManagementFragment : MainModuleFragment(), TouchReactor {
                                         notificationDismissed = true
                                         /*
                                          * We could turn off alert notification from SettingsManager, but
-                                         * it’s best not to, as the user can still enable notification
+                                         * itâ€™s best not to, as the user can still enable notification
                                          * permission again from Android settings, and there is a
                                          * permission check before sending any notification even if
                                          * preference is enabled.

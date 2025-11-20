@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.meteoam
 
 import android.content.Context
@@ -61,7 +45,7 @@ class MeteoAmService @Inject constructor(
     }
 
     override val attributionLinks = mapOf(
-        "Servizio Meteorologico dell’Aeronautica Militare" to "https://www.meteoam.it/",
+        "Servizio Meteorologico dellâ€™Aeronautica Militare" to "https://www.meteoam.it/",
         "www.meteoam.it" to "https://www.meteoam.it/"
     )
 
@@ -271,7 +255,7 @@ class MeteoAmService @Inject constructor(
             "14" -> context.getString(R.string.meteoam_weather_text_fog) // "Nebbia"
             "15" -> context.getString(R.string.meteoam_weather_text_hail) // "Grandine"
             "16" -> context.getString(R.string.meteoam_weather_text_snow) // "Neve"
-            "17" -> context.getString(R.string.meteoam_weather_text_tornado_watersprout) // "Tromba d’aria o marina"
+            "17" -> context.getString(R.string.meteoam_weather_text_tornado_watersprout) // "Tromba dâ€™aria o marina"
             "18" -> context.getString(R.string.meteoam_weather_text_smoke) // "Fumo"
             "19" -> context.getString(R.string.meteoam_weather_text_sand_storm) // "Tempesta di sabbia"
             else -> null

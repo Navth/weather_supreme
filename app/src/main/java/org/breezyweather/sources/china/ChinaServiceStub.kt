@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.china
 
 import android.content.Context
@@ -43,9 +27,9 @@ abstract class ChinaServiceStub(context: Context) :
     override val name = context.currentLocale.getCountryName("CN")
     override val continent = SourceContinent.ASIA
 
-    override val locationSearchAttribution = "北京天气、彩云天气、中国环境监测总站"
+    override val locationSearchAttribution = "åŒ—äº¬å¤©æ°”ã€å½©äº‘å¤©æ°”ã€ä¸­å›½çŽ¯å¢ƒç›‘æµ‹æ€»ç«™"
 
-    protected val weatherAttribution = "北京天气、彩云天气、中国环境监测总站"
+    protected val weatherAttribution = "åŒ—äº¬å¤©æ°”ã€å½©äº‘å¤©æ°”ã€ä¸­å›½çŽ¯å¢ƒç›‘æµ‹æ€»ç«™"
     override val supportedFeatures = mapOf(
         SourceFeature.FORECAST to weatherAttribution,
         SourceFeature.CURRENT to weatherAttribution,
@@ -55,8 +39,8 @@ abstract class ChinaServiceStub(context: Context) :
         SourceFeature.REVERSE_GEOCODING to name
     )
     override val attributionLinks = mapOf(
-        "彩云天气" to "https://caiyunapp.com/",
-        "中国环境监测总站" to "https://www.cnemc.cn/"
+        "å½©äº‘å¤©æ°”" to "https://caiyunapp.com/",
+        "ä¸­å›½çŽ¯å¢ƒç›‘æµ‹æ€»ç«™" to "https://www.cnemc.cn/"
     )
 
     override fun isFeatureSupportedForLocation(

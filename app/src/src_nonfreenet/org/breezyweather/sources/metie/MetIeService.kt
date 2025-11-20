@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.metie
 
 import android.content.Context
@@ -61,7 +45,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 /**
- * MET Éireann service
+ * MET Ã‰ireann service
  */
 class MetIeService @Inject constructor(
     @ApplicationContext context: Context,
@@ -78,7 +62,7 @@ class MetIeService @Inject constructor(
     }
 
     override val attributionLinks = mapOf(
-        "Met Éireann" to "https://www.met.ie/",
+        "Met Ã‰ireann" to "https://www.met.ie/",
         "met.ie" to "https://www.met.ie/",
         "Creative Commons Attribution 4.0 International (CC BY 4.0)" to "https://creativecommons.org/licenses/by/4.0/"
     )
@@ -267,7 +251,7 @@ class MetIeService @Inject constructor(
                     endDate = alert.expiry,
                     headline = alert.headline,
                     description = alert.description,
-                    source = "MET Éireann",
+                    source = "MET Ã‰ireann",
                     severity = severity,
                     color = when (alert.level?.lowercase()) {
                         "red" -> Color.rgb(224, 0, 0)

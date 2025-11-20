@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package breezyweather.domain.weather.model
 
 import breezyweather.domain.weather.reference.Month
@@ -90,7 +74,7 @@ data class Weather(
                 val newMinutelyList = mutableListOf<Minutely>()
 
                 if (minutelyForecast.any { it.minuteInterval == 1 }) {
-                    // Let’s assume 1-minute by 1-minute forecast are always 1-minute all along
+                    // Letâ€™s assume 1-minute by 1-minute forecast are always 1-minute all along
                     for (i in minutelyForecast.indices step 5) {
                         newMinutelyList.add(
                             minutelyForecast[i].copy(
@@ -106,7 +90,7 @@ data class Weather(
                         )
                     }
                 } else {
-                    // Let’s assume the other cases are divisible by 5
+                    // Letâ€™s assume the other cases are divisible by 5
                     for (i in minutelyForecast.indices) {
                         if (minutelyForecast[i].minuteInterval == 5) {
                             newMinutelyList.add(minutelyForecast[i])

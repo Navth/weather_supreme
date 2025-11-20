@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.bmd
 
 import android.content.Context
@@ -44,7 +28,7 @@ abstract class BmdServiceStub(context: Context) :
     override val id = "bmd"
     override val name by lazy {
         if (context.currentLocale.code.startsWith("bn")) {
-            "বাংলাদেশ আবহাওয়া অধিদপ্তর"
+            "à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶ à¦†à¦¬à¦¹à¦¾à¦“à¦¯à¦¼à¦¾ à¦…à¦§à¦¿à¦¦à¦ªà§à¦¤à¦°"
         } else {
             "BMD (${context.currentLocale.getCountryName("BD")})"
         }
@@ -53,7 +37,7 @@ abstract class BmdServiceStub(context: Context) :
     override val privacyPolicyUrl = ""
 
     protected val weatherAttribution = if (context.currentLocale.code.startsWith("bn")) {
-        "বাংলাদেশ আবহাওয়া অধিদপ্তর"
+        "à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶ à¦†à¦¬à¦¹à¦¾à¦“à¦¯à¦¼à¦¾ à¦…à¦§à¦¿à¦¦à¦ªà§à¦¤à¦°"
     } else {
         "Bangladesh Meteorological Department"
     }

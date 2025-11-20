@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.common.widgets
 
 import android.animation.Animator
@@ -30,7 +14,7 @@ import java.math.BigDecimal
 import java.text.DecimalFormat
 
 /**
- * 数字增加动画的　TextView
+ * æ•°å­—å¢žåŠ åŠ¨ç”»çš„ã€€TextView
  *
  * @author bakumon
  * @date 16-11-26
@@ -43,37 +27,37 @@ class NumberAnimTextView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : TextView(context, attrs, defStyleAttr) {
     /**
-     * 起始值 默认 0
+     * èµ·å§‹å€¼ é»˜è®¤ 0
      */
     private var mNumStart = "0"
 
     /**
-     * 结束值
+     * ç»“æŸå€¼
      */
     private var mNumEnd: String? = null
 
     /**
-     * 动画总时间 默认 2000 毫秒
+     * åŠ¨ç”»æ€»æ—¶é—´ é»˜è®¤ 2000 æ¯«ç§’
      */
     var duration: Long = 2000
 
     /**
-     * 前缀
+     * å‰ç¼€
      */
     var prefixString = ""
 
     /**
-     * 后缀
+     * åŽç¼€
      */
     var postfixString = ""
 
     /**
-     * 是否开启动画
+     * æ˜¯å¦å¼€å¯åŠ¨ç”»
      */
     var isAnimEnabled = true
 
     /**
-     * 是否是整数
+     * æ˜¯å¦æ˜¯æ•´æ•°
      */
     private var isInt = false
     private var animator: ValueAnimator? = null
@@ -88,20 +72,20 @@ class NumberAnimTextView @JvmOverloads constructor(
         mNumStart = numberStart
         mNumEnd = numberEnd
         if (checkNumString(numberStart, numberEnd)) {
-            // 数字合法　开始数字动画
+            // æ•°å­—åˆæ³•ã€€å¼€å§‹æ•°å­—åŠ¨ç”»
             start()
         } else {
-            // 数字不合法　直接调用　setText　设置最终值
+            // æ•°å­—ä¸åˆæ³•ã€€ç›´æŽ¥è°ƒç”¨ã€€setTextã€€è®¾ç½®æœ€ç»ˆå€¼
             text = prefixString + BidiFormatter.getInstance().unicodeWrap(numberEnd) + postfixString
         }
     }
 
     /**
-     * 校验数字的合法性
+     * æ ¡éªŒæ•°å­—çš„åˆæ³•æ€§
      *
-     * @param numberStart 　开始的数字
-     * @param numberEnd   　结束的数字
-     * @return 合法性
+     * @param numberStart ã€€å¼€å§‹çš„æ•°å­—
+     * @param numberEnd   ã€€ç»“æŸçš„æ•°å­—
+     * @return åˆæ³•æ€§
      */
     private fun checkNumString(numberStart: String, numberEnd: String): Boolean {
         val regexInteger = "-?\\d*"
@@ -121,7 +105,7 @@ class NumberAnimTextView @JvmOverloads constructor(
     @SuppressLint("SetTextI18n")
     private fun start() {
         if (!isAnimEnabled) {
-            // 禁止动画
+            // ç¦æ­¢åŠ¨ç”»
             text = prefixString + format(BigDecimal(mNumEnd)) + postfixString
             return
         }
@@ -151,10 +135,10 @@ class NumberAnimTextView @JvmOverloads constructor(
     }
 
     /**
-     * 格式化 BigDecimal ,小数部分时保留两位小数并四舍五入
+     * æ ¼å¼åŒ– BigDecimal ,å°æ•°éƒ¨åˆ†æ—¶ä¿ç•™ä¸¤ä½å°æ•°å¹¶å››èˆäº”å…¥
      *
-     * @param bd 　BigDecimal
-     * @return 格式化后的 String
+     * @param bd ã€€BigDecimal
+     * @return æ ¼å¼åŒ–åŽçš„ String
      */
     private fun format(bd: BigDecimal): String {
         val pattern = StringBuilder()
@@ -166,7 +150,7 @@ class NumberAnimTextView @JvmOverloads constructor(
             val s2 = mNumEnd!!.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             val s = if (s1.size > s2.size) s1 else s2
             if (s.size > 1) {
-                // 小数部分
+                // å°æ•°éƒ¨åˆ†
                 length = s[1].length
             }
             pattern.append("#,##0")

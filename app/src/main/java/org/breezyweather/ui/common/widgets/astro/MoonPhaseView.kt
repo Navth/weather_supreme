@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.ui.common.widgets.astro
 
 import android.content.Context
@@ -53,7 +37,7 @@ class MoonPhaseView @JvmOverloads constructor(
 
     init {
         setColor(Color.WHITE, Color.BLACK, Color.GRAY)
-        setSurfaceAngle(0f) // from 0 -> phase : 🌑 (new)
+        setSurfaceAngle(0f) // from 0 -> phase : ðŸŒ‘ (new)
         lineWidth = context.dpToPx(lineWidth.toInt().toFloat())
     }
 
@@ -89,9 +73,9 @@ class MoonPhaseView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         mPaint.style = Paint.Style.FILL
-        if (mSurfaceAngle == 0f) { // 🌑
+        if (mSurfaceAngle == 0f) { // ðŸŒ‘
             drawDarkCircle(canvas)
-        } else if (mSurfaceAngle < 90) { // 🌒
+        } else if (mSurfaceAngle < 90) { // ðŸŒ’
             drawLightCircle(canvas)
             mPaint.color = mDarkColor
             canvas.drawArc(mBackgroundRectF, 90f, 180f, true, mPaint)
@@ -103,11 +87,11 @@ class MoonPhaseView @JvmOverloads constructor(
                 mBackgroundRectF.bottom
             )
             canvas.drawArc(mForegroundRectF, 270f, 180f, true, mPaint)
-        } else if (mSurfaceAngle == 90f) { // 🌓
+        } else if (mSurfaceAngle == 90f) { // ðŸŒ“
             drawDarkCircle(canvas)
             mPaint.color = mLightColor
             canvas.drawArc(mBackgroundRectF, 270f, 180f, true, mPaint)
-        } else if (mSurfaceAngle < 180) { // 🌔
+        } else if (mSurfaceAngle < 180) { // ðŸŒ”
             drawDarkCircle(canvas)
             mPaint.color = mLightColor
             canvas.drawArc(mBackgroundRectF, 270f, 180f, true, mPaint)
@@ -120,9 +104,9 @@ class MoonPhaseView @JvmOverloads constructor(
                 mBackgroundRectF.bottom
             )
             canvas.drawArc(mForegroundRectF, 90f, 180f, true, mPaint)
-        } else if (mSurfaceAngle == 180f) { // 🌕
+        } else if (mSurfaceAngle == 180f) { // ðŸŒ•
             drawLightCircle(canvas)
-        } else if (mSurfaceAngle < 270) { // 🌖
+        } else if (mSurfaceAngle < 270) { // ðŸŒ–
             drawDarkCircle(canvas)
             mPaint.color = mLightColor
             canvas.drawArc(mBackgroundRectF, 90f, 180f, true, mPaint)
@@ -135,11 +119,11 @@ class MoonPhaseView @JvmOverloads constructor(
                 mBackgroundRectF.bottom
             )
             canvas.drawArc(mForegroundRectF, 270f, 180f, true, mPaint)
-        } else if (mSurfaceAngle == 270f) { // 🌗
+        } else if (mSurfaceAngle == 270f) { // ðŸŒ—
             drawDarkCircle(canvas)
             mPaint.color = mLightColor
             canvas.drawArc(mBackgroundRectF, 90f, 180f, true, mPaint)
-        } else { // surface angle < 360. 🌘
+        } else { // surface angle < 360. ðŸŒ˜
             drawLightCircle(canvas)
             mPaint.color = mDarkColor
             canvas.drawArc(mBackgroundRectF, 270f, 180f, true, mPaint)

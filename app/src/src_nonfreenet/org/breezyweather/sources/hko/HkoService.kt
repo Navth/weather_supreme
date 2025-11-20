@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.hko
 
 import android.content.Context
@@ -85,7 +69,7 @@ class HkoService @Inject constructor(
     override val id = "hko"
     override val name by lazy {
         if (context.currentLocale.code.startsWith("zh")) {
-            "香港天文台"
+            "é¦™æ¸¯å¤©æ–‡å°"
         } else {
             "HKO (${context.currentLocale.getCountryName("HK")})"
         }
@@ -117,7 +101,7 @@ class HkoService @Inject constructor(
 
     private val weatherAttribution by lazy {
         if (context.currentLocale.code.startsWith("zh")) {
-            "香港天文台"
+            "é¦™æ¸¯å¤©æ–‡å°"
         } else {
             "Hong Kong Observatory"
         }
@@ -483,7 +467,7 @@ class HkoService @Inject constructor(
                 }
 
                 // The last hour in the output is just the condition for the previous 3 hours. Don't add to the list.
-                // Occasionally HKO's numerical weather forecast models will produce nonsensical output (e.g. 9999°C).
+                // Occasionally HKO's numerical weather forecast models will produce nonsensical output (e.g. 9999Â°C).
                 // Reject them.
                 if (i < hourlyWeatherForecast.size - 1) {
                     hourlyList.add(
@@ -523,7 +507,7 @@ class HkoService @Inject constructor(
                 else -> "Val_Eng"
             }
             source = when {
-                it.startsWith("zh") -> "香港天文台"
+                it.startsWith("zh") -> "é¦™æ¸¯å¤©æ–‡å°"
                 else -> "Hong Kong Observatory"
             }
         }
@@ -1033,8 +1017,8 @@ class HkoService @Inject constructor(
         context: Context,
         location: Location,
     ): Observable<Map<String, String>> {
-        // Forecast grid is valid between (21.75°N–23.25°N, 113.35°E–114.95°E).
-        // Current grid is valid between (22.13°N–22.57°N, 113.82°E–114.54°E).
+        // Forecast grid is valid between (21.75Â°Nâ€“23.25Â°N, 113.35Â°Eâ€“114.95Â°E).
+        // Current grid is valid between (22.13Â°Nâ€“22.57Â°N, 113.82Â°Eâ€“114.54Â°E).
         // If the location is within the boundaries of the current grid,
         // it is definitely within the boundaries of the forecast grid.
         if (location.latitude < HKO_CURRENT_GRID_LATITUDES.first() ||
@@ -1056,8 +1040,8 @@ class HkoService @Inject constructor(
         }
 
         // Identify grid ID for Forecast.
-        // It is in a 16 E-W × 15-N-S configuration, numbered from 1 to 240.
-        // Each block is 0.1° latitude and 0.1° longitude in size.
+        // It is in a 16 E-W Ã— 15-N-S configuration, numbered from 1 to 240.
+        // Each block is 0.1Â° latitude and 0.1Â° longitude in size.
         val row = (232 - round(location.latitude * 10)).toInt()
         val column = (round(location.longitude * 10) - 1133).toInt()
         val forecastGrid = "G" + (row * 16 + column).toString()
@@ -1087,7 +1071,7 @@ class HkoService @Inject constructor(
         var column: Int? = null
 
         // Identify grid ID for Current Observation and Reverse Geolocation.
-        // Current observations are in a 18 E-W × 18-N-S configuration, numbered from 0101 to 1818.
+        // Current observations are in a 18 E-W Ã— 18-N-S configuration, numbered from 0101 to 1818.
         // The grid spacing is uneven, hence we iterate through the lists of the grid boundaries.
         var i = 1
         while (i < HKO_CURRENT_GRID_LATITUDES.size && row == null) {

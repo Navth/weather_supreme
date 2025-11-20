@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.mgm
 
 import android.content.Context
@@ -83,7 +67,7 @@ class MgmService @Inject constructor(
         val currentStation = location.parameters.getOrElse(id) { null }?.getOrElse("currentStation") { null }
         val hourlyStation = location.parameters.getOrElse(id) { null }?.getOrElse("hourlyStation") { null }
         val dailyStation = location.parameters.getOrElse(id) { null }?.getOrElse("dailyStation") { null }
-        // Not checking hourlyStation: some rural locations in Türkiye are not assigned to one
+        // Not checking hourlyStation: some rural locations in TÃ¼rkiye are not assigned to one
         if (currentStation.isNullOrEmpty() || dailyStation.isNullOrEmpty()) {
             return Observable.error(InvalidLocationException())
         }
@@ -109,7 +93,7 @@ class MgmService @Inject constructor(
             Observable.just(emptyList())
         }
 
-        // Some rural locations in Türkiye are not assigned to an hourlyStation
+        // Some rural locations in TÃ¼rkiye are not assigned to an hourlyStation
         val hourly = if (SourceFeature.FORECAST in requestedFeatures && !hourlyStation.isNullOrEmpty()) {
             mApi.getHourly(hourlyStation).onErrorResumeNext {
                 /*if (BreezyWeather.instance.debugMode) {
@@ -318,7 +302,7 @@ class MgmService @Inject constructor(
         tomorrowAlertResult: List<MgmAlertResult>?,
     ): List<Alert> {
         val alertList = mutableListOf<Alert>()
-        val source = "Meteoroloji Genel Müdürlüğü"
+        val source = "Meteoroloji Genel MÃ¼dÃ¼rlÃ¼ÄŸÃ¼"
         listOf(todayAlertResult, tomorrowAlertResult).forEach { alerts ->
             alerts?.forEach {
                 if (it.towns?.red?.contains(townCode)!!) {
@@ -408,34 +392,34 @@ class MgmService @Inject constructor(
         condition: String?,
     ): String? {
         return when (condition) {
-            "A" -> context.getString(R.string.common_weather_text_clear_sky) // Açık
+            "A" -> context.getString(R.string.common_weather_text_clear_sky) // AÃ§Ä±k
             "AB" -> context.getString(R.string.common_weather_text_mostly_clear) // Az Bulutlu
-            "PB" -> context.getString(R.string.common_weather_text_partly_cloudy) // Parçalı Bulutlu
-            "CB" -> context.getString(R.string.common_weather_text_cloudy) // Çok Bulutlu
-            "HY" -> context.getString(R.string.common_weather_text_rain_light) // Hafif Yağmurlu
-            "Y" -> context.getString(R.string.common_weather_text_rain) // Yağmurlu
-            "KY" -> context.getString(R.string.common_weather_text_rain_heavy) // Kuvvetli Yağmurlu
-            "KKY" -> context.getString(R.string.common_weather_text_rain_snow_mixed) // Karla Karışık Yağmurlu
-            "HKY" -> context.getString(R.string.common_weather_text_snow_light) // Hafif Kar Yağışlı
-            "K" -> context.getString(R.string.common_weather_text_snow) // Kar Yağışlı
-            "KYK", "YKY" -> context.getString(R.string.common_weather_text_snow_heavy) // Yoğun Kar Yağışlı
-            "HSY" -> context.getString(R.string.common_weather_text_rain_showers_light) // Hafif Sağanak Yağışlı
-            "SY" -> context.getString(R.string.common_weather_text_rain_showers) // Sağanak Yağışlı
-            "KSY" -> context.getString(R.string.common_weather_text_rain_showers_heavy) // Kuvvetli Sağanak Yağışlı
-            "MSY" -> context.getString(R.string.common_weather_text_rain_showers) // Mevzi Sağanak Yağışlı
+            "PB" -> context.getString(R.string.common_weather_text_partly_cloudy) // ParÃ§alÄ± Bulutlu
+            "CB" -> context.getString(R.string.common_weather_text_cloudy) // Ã‡ok Bulutlu
+            "HY" -> context.getString(R.string.common_weather_text_rain_light) // Hafif YaÄŸmurlu
+            "Y" -> context.getString(R.string.common_weather_text_rain) // YaÄŸmurlu
+            "KY" -> context.getString(R.string.common_weather_text_rain_heavy) // Kuvvetli YaÄŸmurlu
+            "KKY" -> context.getString(R.string.common_weather_text_rain_snow_mixed) // Karla KarÄ±ÅŸÄ±k YaÄŸmurlu
+            "HKY" -> context.getString(R.string.common_weather_text_snow_light) // Hafif Kar YaÄŸÄ±ÅŸlÄ±
+            "K" -> context.getString(R.string.common_weather_text_snow) // Kar YaÄŸÄ±ÅŸlÄ±
+            "KYK", "YKY" -> context.getString(R.string.common_weather_text_snow_heavy) // YoÄŸun Kar YaÄŸÄ±ÅŸlÄ±
+            "HSY" -> context.getString(R.string.common_weather_text_rain_showers_light) // Hafif SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "SY" -> context.getString(R.string.common_weather_text_rain_showers) // SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "KSY" -> context.getString(R.string.common_weather_text_rain_showers_heavy) // Kuvvetli SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "MSY" -> context.getString(R.string.common_weather_text_rain_showers) // Mevzi SaÄŸanak YaÄŸÄ±ÅŸlÄ±
             "DY" -> context.getString(R.string.weather_kind_hail) // Dolu
-            "GSY" -> context.getString(R.string.weather_kind_thunderstorm) // Gökgürültülü Sağanak Yağışlı
-            "KGY" -> context.getString(R.string.weather_kind_thunderstorm) // Kuvvetli Gökgürültülü Sağanak Yağışlı
+            "GSY" -> context.getString(R.string.weather_kind_thunderstorm) // GÃ¶kgÃ¼rÃ¼ltÃ¼lÃ¼ SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "KGY" -> context.getString(R.string.weather_kind_thunderstorm) // Kuvvetli GÃ¶kgÃ¼rÃ¼ltÃ¼lÃ¼ SaÄŸanak YaÄŸÄ±ÅŸlÄ±
             "SIS" -> context.getString(R.string.common_weather_text_fog) // Sisli
             "PUS" -> context.getString(R.string.common_weather_text_mist) // Puslu
-            "DNM" -> context.getString(R.string.common_weather_text_smoke) // Dumanlı
-            "KF" -> context.getString(R.string.common_weather_text_sand_storm) // Toz veya Kum Fırtınası
-            "R" -> context.getString(R.string.weather_kind_wind) // Rüzgarlı
-            "GKR" -> context.getString(R.string.weather_kind_wind) // Güneyli Kuvvetli Rüzgar
-            "KKR" -> context.getString(R.string.weather_kind_wind) // Kuzeyli Kuvvetli Rüzgar
-            "SCK" -> context.getString(R.string.common_weather_text_hot) // Sıcak
-            "SGK" -> context.getString(R.string.common_weather_text_cold) // Soğuk
-            "HHY" -> context.getString(R.string.common_weather_text_rain) // Yağışlı
+            "DNM" -> context.getString(R.string.common_weather_text_smoke) // DumanlÄ±
+            "KF" -> context.getString(R.string.common_weather_text_sand_storm) // Toz veya Kum FÄ±rtÄ±nasÄ±
+            "R" -> context.getString(R.string.weather_kind_wind) // RÃ¼zgarlÄ±
+            "GKR" -> context.getString(R.string.weather_kind_wind) // GÃ¼neyli Kuvvetli RÃ¼zgar
+            "KKR" -> context.getString(R.string.weather_kind_wind) // Kuzeyli Kuvvetli RÃ¼zgar
+            "SCK" -> context.getString(R.string.common_weather_text_hot) // SÄ±cak
+            "SGK" -> context.getString(R.string.common_weather_text_cold) // SoÄŸuk
+            "HHY" -> context.getString(R.string.common_weather_text_rain) // YaÄŸÄ±ÅŸlÄ±
             else -> null
         }
     }
@@ -444,34 +428,34 @@ class MgmService @Inject constructor(
         condition: String?,
     ): WeatherCode? {
         return when (condition) {
-            "A" -> WeatherCode.CLEAR // Açık
+            "A" -> WeatherCode.CLEAR // AÃ§Ä±k
             "AB" -> WeatherCode.PARTLY_CLOUDY // Az Bulutlu
-            "PB" -> WeatherCode.PARTLY_CLOUDY // Parçalı Bulutlu
-            "CB" -> WeatherCode.CLOUDY // Çok Bulutlu
-            "HY" -> WeatherCode.RAIN // Hafif Yağmurlu
-            "Y" -> WeatherCode.RAIN // Yağmurlu
-            "KY" -> WeatherCode.RAIN // Kuvvetli Yağmurlu
-            "KKY" -> WeatherCode.SLEET // Karla Karışık Yağmurlu
-            "HKY" -> WeatherCode.SNOW // Hafif Kar Yağışlı
-            "K" -> WeatherCode.SNOW // Kar Yağışlı
-            "KYK", "YKY" -> WeatherCode.SNOW // Yoğun Kar Yağışlı
-            "HSY" -> WeatherCode.RAIN // Hafif Sağanak Yağışlı
-            "SY" -> WeatherCode.RAIN // Sağanak Yağışlı
-            "KSY" -> WeatherCode.RAIN // Kuvvetli Sağanak Yağışlı
-            "MSY" -> WeatherCode.RAIN // Mevzi Sağanak Yağışlı
+            "PB" -> WeatherCode.PARTLY_CLOUDY // ParÃ§alÄ± Bulutlu
+            "CB" -> WeatherCode.CLOUDY // Ã‡ok Bulutlu
+            "HY" -> WeatherCode.RAIN // Hafif YaÄŸmurlu
+            "Y" -> WeatherCode.RAIN // YaÄŸmurlu
+            "KY" -> WeatherCode.RAIN // Kuvvetli YaÄŸmurlu
+            "KKY" -> WeatherCode.SLEET // Karla KarÄ±ÅŸÄ±k YaÄŸmurlu
+            "HKY" -> WeatherCode.SNOW // Hafif Kar YaÄŸÄ±ÅŸlÄ±
+            "K" -> WeatherCode.SNOW // Kar YaÄŸÄ±ÅŸlÄ±
+            "KYK", "YKY" -> WeatherCode.SNOW // YoÄŸun Kar YaÄŸÄ±ÅŸlÄ±
+            "HSY" -> WeatherCode.RAIN // Hafif SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "SY" -> WeatherCode.RAIN // SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "KSY" -> WeatherCode.RAIN // Kuvvetli SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "MSY" -> WeatherCode.RAIN // Mevzi SaÄŸanak YaÄŸÄ±ÅŸlÄ±
             "DY" -> WeatherCode.HAIL // Dolu
-            "GSY" -> WeatherCode.THUNDERSTORM // Gökgürültülü Sağanak Yağışlı
-            "KGY" -> WeatherCode.THUNDERSTORM // Kuvvetli Gökgürültülü Sağanak Yağışlı
+            "GSY" -> WeatherCode.THUNDERSTORM // GÃ¶kgÃ¼rÃ¼ltÃ¼lÃ¼ SaÄŸanak YaÄŸÄ±ÅŸlÄ±
+            "KGY" -> WeatherCode.THUNDERSTORM // Kuvvetli GÃ¶kgÃ¼rÃ¼ltÃ¼lÃ¼ SaÄŸanak YaÄŸÄ±ÅŸlÄ±
             "SIS" -> WeatherCode.FOG // Sisli
             "PUS" -> WeatherCode.FOG // Puslu
-            "DNM" -> WeatherCode.HAZE // Dumanlı
-            "KF" -> WeatherCode.WIND // Toz veya Kum Fırtınası
-            "R" -> WeatherCode.WIND // Rüzgarlı
-            "GKR" -> WeatherCode.WIND // Güneyli Kuvvetli Rüzgar
-            "KKR" -> WeatherCode.WIND // Kuzeyli Kuvvetli Rüzgar
-            "SCK" -> null // Sıcak
-            "SGK" -> null // Soğuk
-            "HHY" -> WeatherCode.RAIN // Yağışlı
+            "DNM" -> WeatherCode.HAZE // DumanlÄ±
+            "KF" -> WeatherCode.WIND // Toz veya Kum FÄ±rtÄ±nasÄ±
+            "R" -> WeatherCode.WIND // RÃ¼zgarlÄ±
+            "GKR" -> WeatherCode.WIND // GÃ¼neyli Kuvvetli RÃ¼zgar
+            "KKR" -> WeatherCode.WIND // Kuzeyli Kuvvetli RÃ¼zgar
+            "SCK" -> null // SÄ±cak
+            "SGK" -> null // SoÄŸuk
+            "HHY" -> WeatherCode.RAIN // YaÄŸÄ±ÅŸlÄ±
             else -> null
         }
     }
@@ -485,18 +469,18 @@ class MgmService @Inject constructor(
         val items = mutableListOf<String>()
         weather?.forEach {
             when (it) {
-                "cold" -> items.add("Soğuk")
-                "hot" -> items.add("Sıcak")
+                "cold" -> items.add("SoÄŸuk")
+                "hot" -> items.add("SÄ±cak")
                 "fog" -> items.add("Sis")
                 "agricultural" -> items.add("Zirai Don")
                 "ice" -> items.add("Buzlanma ve Don")
-                "dust" -> items.add("Toz Taşınımı")
+                "dust" -> items.add("Toz TaÅŸÄ±nÄ±mÄ±")
                 "snowmelt" -> items.add("Kar Erimesi")
-                "avalanche" -> items.add("Çığ")
+                "avalanche" -> items.add("Ã‡Ä±ÄŸ")
                 "snow" -> items.add("Kar")
-                "thunderstorm" -> items.add("Gökgürültülü Sağanak Yağış")
-                "wind" -> items.add("Rüzgar")
-                "rain" -> items.add("Yağmur")
+                "thunderstorm" -> items.add("GÃ¶kgÃ¼rÃ¼ltÃ¼lÃ¼ SaÄŸanak YaÄŸÄ±ÅŸ")
+                "wind" -> items.add("RÃ¼zgar")
+                "rain" -> items.add("YaÄŸmur")
             }
         }
         return items.joinToString(", ")
@@ -554,7 +538,7 @@ class MgmService @Inject constructor(
     ): Boolean {
         if (coordinatesChanged) return true
 
-        // Not checking hourlyStation: some rural locations in Türkiye are not assigned to one
+        // Not checking hourlyStation: some rural locations in TÃ¼rkiye are not assigned to one
         val currentStation = location.parameters.getOrElse(id) { null }?.getOrElse("currentStation") { null }
         val dailyStation = location.parameters.getOrElse(id) { null }?.getOrElse("dailyStation") { null }
 

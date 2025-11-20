@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.lhmt
 
 import android.content.Context
@@ -515,66 +499,66 @@ class LhmtService @Inject constructor(
         // These codes are used only by LHMT for identifying whether an alert applies to a municipality.
         // They are not related to Lithuania's ISO 3166-2 subdivision codes.
         private val MUNICIPALITIES = listOf(
-            Pair("LT032", "Akmenės rajono savivaldybė"),
-            Pair("LT011", "Alytaus miesto savivaldybė"),
-            Pair("LT033", "Alytaus rajono savivaldybė"),
-            Pair("LT034", "Anykščių rajono savivaldybė"),
-            Pair("LT012", "Birštono savivaldybė"),
-            Pair("LT036", "Biržų rajono savivaldybė"),
-            Pair("LT015", "Druskininkų savivaldybė"),
-            Pair("LT042", "Elektrėnų savivaldybė"),
-            Pair("LT045", "Ignalinos rajono savivaldybė"),
-            Pair("LT046", "Jonavos rajono savivaldybė"),
-            Pair("LT047", "Joniškio rajono savivaldybė"),
-            Pair("LT094", "Jurbarko rajono savivaldybė"),
-            Pair("LT049", "Kaišiadorių rajono savivaldybė"),
-            Pair("LT048", "Kalvarijos savivaldybė"),
-            Pair("LT019", "Kauno miesto savivaldybė"),
-            Pair("LT052", "Kauno rajono savivaldybė"),
-            Pair("LT058", "Kazlų Rūdos savivaldybė"),
-            Pair("LT053", "Kelmės rajono savivaldybė"),
-            Pair("LT054", "Klaipėdos miesto savivaldybė"),
-            Pair("LT021", "Klaipėdos rajono savivaldybė"),
-            Pair("LT055", "Kretingos rajono savivaldybė"),
-            Pair("LT056", "Kupiškio rajono savivaldybė"),
-            Pair("LT057", "Kėdainių rajono savivaldybė"),
-            Pair("LT059", "Lazdijų rajono savivaldybė"),
-            Pair("LT018", "Marijampolės savivaldybė"),
-            Pair("LT061", "Mažeikių rajono savivaldybė"),
-            Pair("LT062", "Molėtų rajono savivaldybė"),
-            Pair("LT023", "Neringos miesto savivaldybė"),
-            Pair("LT063", "Pagėgių savivaldybė"),
-            Pair("LT065", "Pakruojo rajono savivaldybė"),
-            Pair("LT025", "Palangos miesto savivaldybė"),
-            Pair("LT027", "Panevėžio miesto savivaldybė"),
-            Pair("LT066", "Panevėžio rajono savivaldybė"),
-            Pair("LT067", "Pasvalio rajono savivaldybė"),
-            Pair("LT068", "Plungės rajono savivaldybė"),
-            Pair("LT069", "Prienų rajono savivaldybė"),
-            Pair("LT071", "Radviliškio rajono savivaldybė"),
-            Pair("LT072", "Raseinių rajono savivaldybė"),
-            Pair("LT074", "Rietavo savivaldybė"),
-            Pair("LT073", "Rokiškio rajono savivaldybė"),
-            Pair("LT084", "Šakių rajono savivaldybė"),
-            Pair("LT085", "Šalčininkų rajono savivaldybė"),
-            Pair("LT029", "Šiaulių miesto savivaldybė"),
-            Pair("LT091", "Šiaulių rajono savivaldybė"),
-            Pair("LT087", "Šilalės rajono savivaldybė"),
-            Pair("LT088", "Šilutės rajono savivaldybė"),
-            Pair("LT089", "Širvintų rajono savivaldybė"),
-            Pair("LT075", "Skuodo rajono savivaldybė"),
-            Pair("LT086", "Švenčionių rajono savivaldybė"),
-            Pair("LT077", "Tauragės rajono savivaldybė"),
-            Pair("LT078", "Telšių rajono savivaldybė"),
-            Pair("LT079", "Trakų rajono savivaldybė"),
-            Pair("LT081", "Ukmergės rajono savivaldybė"),
-            Pair("LT082", "Utenos rajono savivaldybė"),
-            Pair("LT038", "Varėnos rajono savivaldybė"),
-            Pair("LT039", "Vilkaviškio rajono savivaldybė"),
-            Pair("LT013", "Vilniaus miesto savivaldybė"),
-            Pair("LT041", "Vilniaus rajono savivaldybė"),
-            Pair("LT030", "Visagino savivaldybė"),
-            Pair("LT043", "Zarasų rajono savivaldybė")
+            Pair("LT032", "AkmenÄ—s rajono savivaldybÄ—"),
+            Pair("LT011", "Alytaus miesto savivaldybÄ—"),
+            Pair("LT033", "Alytaus rajono savivaldybÄ—"),
+            Pair("LT034", "AnykÅ¡ÄiÅ³ rajono savivaldybÄ—"),
+            Pair("LT012", "BirÅ¡tono savivaldybÄ—"),
+            Pair("LT036", "BirÅ¾Å³ rajono savivaldybÄ—"),
+            Pair("LT015", "DruskininkÅ³ savivaldybÄ—"),
+            Pair("LT042", "ElektrÄ—nÅ³ savivaldybÄ—"),
+            Pair("LT045", "Ignalinos rajono savivaldybÄ—"),
+            Pair("LT046", "Jonavos rajono savivaldybÄ—"),
+            Pair("LT047", "JoniÅ¡kio rajono savivaldybÄ—"),
+            Pair("LT094", "Jurbarko rajono savivaldybÄ—"),
+            Pair("LT049", "KaiÅ¡iadoriÅ³ rajono savivaldybÄ—"),
+            Pair("LT048", "Kalvarijos savivaldybÄ—"),
+            Pair("LT019", "Kauno miesto savivaldybÄ—"),
+            Pair("LT052", "Kauno rajono savivaldybÄ—"),
+            Pair("LT058", "KazlÅ³ RÅ«dos savivaldybÄ—"),
+            Pair("LT053", "KelmÄ—s rajono savivaldybÄ—"),
+            Pair("LT054", "KlaipÄ—dos miesto savivaldybÄ—"),
+            Pair("LT021", "KlaipÄ—dos rajono savivaldybÄ—"),
+            Pair("LT055", "Kretingos rajono savivaldybÄ—"),
+            Pair("LT056", "KupiÅ¡kio rajono savivaldybÄ—"),
+            Pair("LT057", "KÄ—dainiÅ³ rajono savivaldybÄ—"),
+            Pair("LT059", "LazdijÅ³ rajono savivaldybÄ—"),
+            Pair("LT018", "MarijampolÄ—s savivaldybÄ—"),
+            Pair("LT061", "MaÅ¾eikiÅ³ rajono savivaldybÄ—"),
+            Pair("LT062", "MolÄ—tÅ³ rajono savivaldybÄ—"),
+            Pair("LT023", "Neringos miesto savivaldybÄ—"),
+            Pair("LT063", "PagÄ—giÅ³ savivaldybÄ—"),
+            Pair("LT065", "Pakruojo rajono savivaldybÄ—"),
+            Pair("LT025", "Palangos miesto savivaldybÄ—"),
+            Pair("LT027", "PanevÄ—Å¾io miesto savivaldybÄ—"),
+            Pair("LT066", "PanevÄ—Å¾io rajono savivaldybÄ—"),
+            Pair("LT067", "Pasvalio rajono savivaldybÄ—"),
+            Pair("LT068", "PlungÄ—s rajono savivaldybÄ—"),
+            Pair("LT069", "PrienÅ³ rajono savivaldybÄ—"),
+            Pair("LT071", "RadviliÅ¡kio rajono savivaldybÄ—"),
+            Pair("LT072", "RaseiniÅ³ rajono savivaldybÄ—"),
+            Pair("LT074", "Rietavo savivaldybÄ—"),
+            Pair("LT073", "RokiÅ¡kio rajono savivaldybÄ—"),
+            Pair("LT084", "Å akiÅ³ rajono savivaldybÄ—"),
+            Pair("LT085", "Å alÄininkÅ³ rajono savivaldybÄ—"),
+            Pair("LT029", "Å iauliÅ³ miesto savivaldybÄ—"),
+            Pair("LT091", "Å iauliÅ³ rajono savivaldybÄ—"),
+            Pair("LT087", "Å ilalÄ—s rajono savivaldybÄ—"),
+            Pair("LT088", "Å ilutÄ—s rajono savivaldybÄ—"),
+            Pair("LT089", "Å irvintÅ³ rajono savivaldybÄ—"),
+            Pair("LT075", "Skuodo rajono savivaldybÄ—"),
+            Pair("LT086", "Å venÄioniÅ³ rajono savivaldybÄ—"),
+            Pair("LT077", "TauragÄ—s rajono savivaldybÄ—"),
+            Pair("LT078", "TelÅ¡iÅ³ rajono savivaldybÄ—"),
+            Pair("LT079", "TrakÅ³ rajono savivaldybÄ—"),
+            Pair("LT081", "UkmergÄ—s rajono savivaldybÄ—"),
+            Pair("LT082", "Utenos rajono savivaldybÄ—"),
+            Pair("LT038", "VarÄ—nos rajono savivaldybÄ—"),
+            Pair("LT039", "VilkaviÅ¡kio rajono savivaldybÄ—"),
+            Pair("LT013", "Vilniaus miesto savivaldybÄ—"),
+            Pair("LT041", "Vilniaus rajono savivaldybÄ—"),
+            Pair("LT030", "Visagino savivaldybÄ—"),
+            Pair("LT043", "ZarasÅ³ rajono savivaldybÄ—")
         )
 
         // The county codes used by LHMT is obtained from any of their warning files,
@@ -585,12 +569,12 @@ class LhmtService @Inject constructor(
         private val COUNTIES = listOf(
             Pair("LT001", "Alytaus apskritis"),
             Pair("LT002", "Kauno apskritis"),
-            Pair("LT003", "Klaipėdos apskritis"),
-            Pair("LT004", "Marijampolės apskritis"),
-            Pair("LT005", "Panevėžio apskritis"),
-            Pair("LT006", "Šiaulių apskritis"),
-            Pair("LT007", "Tauragės apskritis"),
-            Pair("LT008", "Telšių apskritis"),
+            Pair("LT003", "KlaipÄ—dos apskritis"),
+            Pair("LT004", "MarijampolÄ—s apskritis"),
+            Pair("LT005", "PanevÄ—Å¾io apskritis"),
+            Pair("LT006", "Å iauliÅ³ apskritis"),
+            Pair("LT007", "TauragÄ—s apskritis"),
+            Pair("LT008", "TelÅ¡iÅ³ apskritis"),
             Pair("LT009", "Utenos apskritis"),
             Pair("LT010", "Vilniaus apskritis")
         )
@@ -598,66 +582,66 @@ class LhmtService @Inject constructor(
         // The above LHMT county and municipality codes are matched according to this table:
         // https://en.wikipedia.org/wiki/Municipalities_of_Lithuania#Municipalities
         private val COUNTIES_MUNICIPALITIES = listOf(
-            Pair("LT006", "LT032"), // Šiaulių apskritis -> Akmenės rajono savivaldybė
-            Pair("LT001", "LT011"), // Alytaus apskritis -> Alytaus miesto savivaldybė
-            Pair("LT001", "LT033"), // Alytaus apskritis -> Alytaus rajono savivaldybė
-            Pair("LT009", "LT034"), // Utenos apskritis -> Anykščių rajono savivaldybė
-            Pair("LT002", "LT012"), // Kauno apskritis -> Birštono savivaldybė
-            Pair("LT005", "LT036"), // Panevėžio apskritis -> Biržų rajono savivaldybė
-            Pair("LT001", "LT015"), // Alytaus apskritis -> Druskininkų savivaldybė
-            Pair("LT010", "LT042"), // Vilniaus apskriti -> Elektrėnų savivaldybė
-            Pair("LT009", "LT045"), // Utenos apskritis -> Ignalinos rajono savivaldybė
-            Pair("LT002", "LT046"), // Kauno apskritis -> Jonavos rajono savivaldybė
-            Pair("LT006", "LT047"), // Šiaulių apskritis -> Joniškio rajono savivaldybė
-            Pair("LT007", "LT094"), // Tauragės apskritis -> Jurbarko rajono savivaldybė
-            Pair("LT002", "LT049"), // Kauno apskritis -> Kaišiadorių rajono savivaldybė
-            Pair("LT004", "LT048"), // Marijampolės apskritis -> Kalvarijos savivaldybė
-            Pair("LT002", "LT019"), // Kauno apskritis -> Kauno miesto savivaldybė
-            Pair("LT002", "LT052"), // Kauno apskritis -> Kauno rajono savivaldybė
-            Pair("LT004", "LT058"), // Marijampolės apskritis -> Kazlų Rūdos savivaldybė
-            Pair("LT006", "LT053"), // Šiaulių apskritis -> Kelmės rajono savivaldybė
-            Pair("LT003", "LT054"), // Klaipėdos apskritis -> Klaipėdos miesto savivaldybė
-            Pair("LT003", "LT021"), // Klaipėdos apskritis -> Klaipėdos rajono savivaldybė
-            Pair("LT003", "LT055"), // Klaipėdos apskritis -> Kretingos rajono savivaldybė
-            Pair("LT005", "LT056"), // Panevėžio apskritis -> Kupiškio rajono savivaldybė
-            Pair("LT002", "LT057"), // Kauno apskritis -> Kėdainių rajono savivaldybė
-            Pair("LT001", "LT059"), // Alytaus apskritis -> Lazdijų rajono savivaldybė
-            Pair("LT004", "LT018"), // Marijampolės apskritis -> Marijampolės savivaldybė
-            Pair("LT008", "LT061"), // Telšių apskritis -> Mažeikių rajono savivaldybė
-            Pair("LT009", "LT062"), // Utenos apskritis -> Molėtų rajono savivaldybė
-            Pair("LT003", "LT023"), // Klaipėdos apskritis -> Neringos miesto savivaldybė
-            Pair("LT007", "LT063"), // Tauragės apskritis -> Pagėgių savivaldybė
-            Pair("LT006", "LT065"), // Šiaulių apskritis -> Pakruojo rajono savivaldybė
-            Pair("LT003", "LT025"), // Klaipėdos apskritis -> Palangos miesto savivaldybė
-            Pair("LT005", "LT027"), // Panevėžio apskritis -> Panevėžio miesto savivaldybė
-            Pair("LT005", "LT066"), // Panevėžio apskritis -> Panevėžio rajono savivaldybė
-            Pair("LT005", "LT067"), // Panevėžio apskritis -> Pasvalio rajono savivaldybė
-            Pair("LT008", "LT068"), // Telšių apskritis -> Plungės rajono savivaldybė
-            Pair("LT002", "LT069"), // Kauno apskritis -> Prienų rajono savivaldybė
-            Pair("LT006", "LT071"), // Šiaulių apskritis -> Radviliškio rajono savivaldybė
-            Pair("LT002", "LT072"), // Kauno apskritis -> Raseinių rajono savivaldybė
-            Pair("LT008", "LT074"), // Telšių apskritis -> Rietavo savivaldybė
-            Pair("LT005", "LT073"), // Panevėžio apskritis -> Rokiškio rajono savivaldybė
-            Pair("LT004", "LT084"), // Marijampolės apskritis -> Šakių rajono savivaldybė
-            Pair("LT010", "LT085"), // Vilniaus apskriti -> Šalčininkų rajono savivaldybė
-            Pair("LT006", "LT029"), // Šiaulių apskritis -> Šiaulių miesto savivaldybė
-            Pair("LT006", "LT091"), // Šiaulių apskritis -> Šiaulių rajono savivaldybė
-            Pair("LT007", "LT087"), // Tauragės apskritis -> Šilalės rajono savivaldybė
-            Pair("LT003", "LT088"), // Klaipėdos apskritis -> Šilutės rajono savivaldybė
-            Pair("LT010", "LT089"), // Vilniaus apskriti -> Širvintų rajono savivaldybė
-            Pair("LT003", "LT075"), // Klaipėdos apskritis -> Skuodo rajono savivaldybė
-            Pair("LT010", "LT086"), // Vilniaus apskriti -> Švenčionių rajono savivaldybė
-            Pair("LT007", "LT077"), // Tauragės apskritis -> Tauragės rajono savivaldybė
-            Pair("LT008", "LT078"), // Telšių apskritis -> Telšių rajono savivaldybė
-            Pair("LT010", "LT079"), // Vilniaus apskriti -> Trakų rajono savivaldybė
-            Pair("LT010", "LT081"), // Vilniaus apskriti -> Ukmergės rajono savivaldybė
-            Pair("LT009", "LT082"), // Utenos apskritis -> Utenos rajono savivaldybė
-            Pair("LT001", "LT038"), // Alytaus apskritis -> Varėnos rajono savivaldybė
-            Pair("LT004", "LT039"), // Marijampolės apskritis -> Vilkaviškio rajono savivaldybė
-            Pair("LT010", "LT013"), // Vilniaus apskriti -> Vilniaus miesto savivaldybė
-            Pair("LT010", "LT041"), // Vilniaus apskriti -> Vilniaus rajono savivaldybė
-            Pair("LT009", "LT030"), // Utenos apskritis -> Visagino savivaldybė
-            Pair("LT009", "LT043") // Utenos apskritis -> Zarasų rajono savivaldyb
+            Pair("LT006", "LT032"), // Å iauliÅ³ apskritis -> AkmenÄ—s rajono savivaldybÄ—
+            Pair("LT001", "LT011"), // Alytaus apskritis -> Alytaus miesto savivaldybÄ—
+            Pair("LT001", "LT033"), // Alytaus apskritis -> Alytaus rajono savivaldybÄ—
+            Pair("LT009", "LT034"), // Utenos apskritis -> AnykÅ¡ÄiÅ³ rajono savivaldybÄ—
+            Pair("LT002", "LT012"), // Kauno apskritis -> BirÅ¡tono savivaldybÄ—
+            Pair("LT005", "LT036"), // PanevÄ—Å¾io apskritis -> BirÅ¾Å³ rajono savivaldybÄ—
+            Pair("LT001", "LT015"), // Alytaus apskritis -> DruskininkÅ³ savivaldybÄ—
+            Pair("LT010", "LT042"), // Vilniaus apskriti -> ElektrÄ—nÅ³ savivaldybÄ—
+            Pair("LT009", "LT045"), // Utenos apskritis -> Ignalinos rajono savivaldybÄ—
+            Pair("LT002", "LT046"), // Kauno apskritis -> Jonavos rajono savivaldybÄ—
+            Pair("LT006", "LT047"), // Å iauliÅ³ apskritis -> JoniÅ¡kio rajono savivaldybÄ—
+            Pair("LT007", "LT094"), // TauragÄ—s apskritis -> Jurbarko rajono savivaldybÄ—
+            Pair("LT002", "LT049"), // Kauno apskritis -> KaiÅ¡iadoriÅ³ rajono savivaldybÄ—
+            Pair("LT004", "LT048"), // MarijampolÄ—s apskritis -> Kalvarijos savivaldybÄ—
+            Pair("LT002", "LT019"), // Kauno apskritis -> Kauno miesto savivaldybÄ—
+            Pair("LT002", "LT052"), // Kauno apskritis -> Kauno rajono savivaldybÄ—
+            Pair("LT004", "LT058"), // MarijampolÄ—s apskritis -> KazlÅ³ RÅ«dos savivaldybÄ—
+            Pair("LT006", "LT053"), // Å iauliÅ³ apskritis -> KelmÄ—s rajono savivaldybÄ—
+            Pair("LT003", "LT054"), // KlaipÄ—dos apskritis -> KlaipÄ—dos miesto savivaldybÄ—
+            Pair("LT003", "LT021"), // KlaipÄ—dos apskritis -> KlaipÄ—dos rajono savivaldybÄ—
+            Pair("LT003", "LT055"), // KlaipÄ—dos apskritis -> Kretingos rajono savivaldybÄ—
+            Pair("LT005", "LT056"), // PanevÄ—Å¾io apskritis -> KupiÅ¡kio rajono savivaldybÄ—
+            Pair("LT002", "LT057"), // Kauno apskritis -> KÄ—dainiÅ³ rajono savivaldybÄ—
+            Pair("LT001", "LT059"), // Alytaus apskritis -> LazdijÅ³ rajono savivaldybÄ—
+            Pair("LT004", "LT018"), // MarijampolÄ—s apskritis -> MarijampolÄ—s savivaldybÄ—
+            Pair("LT008", "LT061"), // TelÅ¡iÅ³ apskritis -> MaÅ¾eikiÅ³ rajono savivaldybÄ—
+            Pair("LT009", "LT062"), // Utenos apskritis -> MolÄ—tÅ³ rajono savivaldybÄ—
+            Pair("LT003", "LT023"), // KlaipÄ—dos apskritis -> Neringos miesto savivaldybÄ—
+            Pair("LT007", "LT063"), // TauragÄ—s apskritis -> PagÄ—giÅ³ savivaldybÄ—
+            Pair("LT006", "LT065"), // Å iauliÅ³ apskritis -> Pakruojo rajono savivaldybÄ—
+            Pair("LT003", "LT025"), // KlaipÄ—dos apskritis -> Palangos miesto savivaldybÄ—
+            Pair("LT005", "LT027"), // PanevÄ—Å¾io apskritis -> PanevÄ—Å¾io miesto savivaldybÄ—
+            Pair("LT005", "LT066"), // PanevÄ—Å¾io apskritis -> PanevÄ—Å¾io rajono savivaldybÄ—
+            Pair("LT005", "LT067"), // PanevÄ—Å¾io apskritis -> Pasvalio rajono savivaldybÄ—
+            Pair("LT008", "LT068"), // TelÅ¡iÅ³ apskritis -> PlungÄ—s rajono savivaldybÄ—
+            Pair("LT002", "LT069"), // Kauno apskritis -> PrienÅ³ rajono savivaldybÄ—
+            Pair("LT006", "LT071"), // Å iauliÅ³ apskritis -> RadviliÅ¡kio rajono savivaldybÄ—
+            Pair("LT002", "LT072"), // Kauno apskritis -> RaseiniÅ³ rajono savivaldybÄ—
+            Pair("LT008", "LT074"), // TelÅ¡iÅ³ apskritis -> Rietavo savivaldybÄ—
+            Pair("LT005", "LT073"), // PanevÄ—Å¾io apskritis -> RokiÅ¡kio rajono savivaldybÄ—
+            Pair("LT004", "LT084"), // MarijampolÄ—s apskritis -> Å akiÅ³ rajono savivaldybÄ—
+            Pair("LT010", "LT085"), // Vilniaus apskriti -> Å alÄininkÅ³ rajono savivaldybÄ—
+            Pair("LT006", "LT029"), // Å iauliÅ³ apskritis -> Å iauliÅ³ miesto savivaldybÄ—
+            Pair("LT006", "LT091"), // Å iauliÅ³ apskritis -> Å iauliÅ³ rajono savivaldybÄ—
+            Pair("LT007", "LT087"), // TauragÄ—s apskritis -> Å ilalÄ—s rajono savivaldybÄ—
+            Pair("LT003", "LT088"), // KlaipÄ—dos apskritis -> Å ilutÄ—s rajono savivaldybÄ—
+            Pair("LT010", "LT089"), // Vilniaus apskriti -> Å irvintÅ³ rajono savivaldybÄ—
+            Pair("LT003", "LT075"), // KlaipÄ—dos apskritis -> Skuodo rajono savivaldybÄ—
+            Pair("LT010", "LT086"), // Vilniaus apskriti -> Å venÄioniÅ³ rajono savivaldybÄ—
+            Pair("LT007", "LT077"), // TauragÄ—s apskritis -> TauragÄ—s rajono savivaldybÄ—
+            Pair("LT008", "LT078"), // TelÅ¡iÅ³ apskritis -> TelÅ¡iÅ³ rajono savivaldybÄ—
+            Pair("LT010", "LT079"), // Vilniaus apskriti -> TrakÅ³ rajono savivaldybÄ—
+            Pair("LT010", "LT081"), // Vilniaus apskriti -> UkmergÄ—s rajono savivaldybÄ—
+            Pair("LT009", "LT082"), // Utenos apskritis -> Utenos rajono savivaldybÄ—
+            Pair("LT001", "LT038"), // Alytaus apskritis -> VarÄ—nos rajono savivaldybÄ—
+            Pair("LT004", "LT039"), // MarijampolÄ—s apskritis -> VilkaviÅ¡kio rajono savivaldybÄ—
+            Pair("LT010", "LT013"), // Vilniaus apskriti -> Vilniaus miesto savivaldybÄ—
+            Pair("LT010", "LT041"), // Vilniaus apskriti -> Vilniaus rajono savivaldybÄ—
+            Pair("LT009", "LT030"), // Utenos apskritis -> Visagino savivaldybÄ—
+            Pair("LT009", "LT043") // Utenos apskritis -> ZarasÅ³ rajono savivaldyb
         )
     }
 }

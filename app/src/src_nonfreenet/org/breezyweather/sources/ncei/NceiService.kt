@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.ncei
 
 import android.content.Context
@@ -140,8 +124,8 @@ class NceiService @Inject constructor(
 
     /*
      * Models the weight for each nearby station after the normal distribution.
-     * Let μ = 0
-     *     σ = 1 representing an arbitrary distance of 20km
+     * Let Î¼ = 0
+     *     Ïƒ = 1 representing an arbitrary distance of 20km
      *     x = distance between station and location in multiples of 20km
      * Illustrative weights at various distances:
      *  - Station at location: 0.399 (100% weight)
@@ -168,7 +152,7 @@ class NceiService @Inject constructor(
 
     override fun requestLocationParameters(context: Context, location: Location): Observable<Map<String, String>> {
         // set a bbox of 120km x 120km (60km to each cardinal direction)
-        // TODO: Handle wraparounds for locations near the IDL (180° longitude) more gracefully
+        // TODO: Handle wraparounds for locations near the IDL (180Â° longitude) more gracefully
         val north = min(location.latitude + DISTANCE_LIMIT / (2 * PI * EARTH_POLAR_RADIUS) * 360, 90.0)
         val south = max(location.latitude - DISTANCE_LIMIT / (2 * PI * EARTH_POLAR_RADIUS) * 360, -90.0)
         val multiple = cos(location.latitude / 180 * PI)

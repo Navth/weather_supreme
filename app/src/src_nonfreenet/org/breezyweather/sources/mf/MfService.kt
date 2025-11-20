@@ -1,19 +1,3 @@
-/**
- * This file is part of Breezy Weather.
- *
- * Breezy Weather is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, version 3 of the License.
- *
- * Breezy Weather is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Breezy Weather. If not, see <https://www.gnu.org/licenses/>.
- */
-
 package org.breezyweather.sources.mf
 
 import android.content.Context
@@ -100,7 +84,7 @@ class MfService @Inject constructor(
     }
 
     override val attributionLinks = mapOf(
-        "Météo-France" to "https://meteofrance.com/"
+        "MÃ©tÃ©o-France" to "https://meteofrance.com/"
     )
 
     override fun requestWeather(
@@ -243,7 +227,7 @@ class MfService @Inject constructor(
             Observable.just(MfWarningsOverseasResult())
         }
 
-        // TODO: Only call once a month, unless it’s current position
+        // TODO: Only call once a month, unless itâ€™s current position
         val normals = if (SourceFeature.NORMALS in requestedFeatures) {
             mApi.getNormals(
                 USER_AGENT,
@@ -540,7 +524,7 @@ class MfService @Inject constructor(
         val alertList: MutableList<Alert> = arrayListOf()
         warningsResult.text?.let {
             if (!it.textBlocItems.isNullOrEmpty()) {
-                val title = "Bulletin de Vigilance météo"
+                val title = "Bulletin de Vigilance mÃ©tÃ©o"
                 val content = StringBuilder()
                 it.textBlocItems.forEach { textBlocItem ->
                     if (content.toString().isNotEmpty()) {
@@ -561,8 +545,8 @@ class MfService @Inject constructor(
                         endDate = it.endTime,
                         headline = title,
                         description = content.toString(),
-                        source = "Météo-France",
-                        severity = AlertSeverity.EXTREME, // Let’s put it on top
+                        source = "MÃ©tÃ©o-France",
+                        severity = AlertSeverity.EXTREME, // Letâ€™s put it on top
                         color = warningsDictionaryResult.colors?.firstOrNull { c -> c.id == warningsResult.colorMax }
                             ?.hexaCode?.toColorInt()
                             ?: Alert.colorFromSeverity(AlertSeverity.UNKNOWN)
@@ -588,7 +572,7 @@ class MfService @Inject constructor(
                         }
                         // TODO: Move to non-translatable en/fr strings
                         content
-                            .append("<h2>Conséquences possibles</h2>\n")
+                            .append("<h2>ConsÃ©quences possibles</h2>\n")
                             .append(consequences)
                     }
                     if (!advices.isNullOrEmpty()) {
@@ -616,7 +600,7 @@ class MfService @Inject constructor(
                                 ?.name
                                 ?: getWarningType(timelaps.phenomenonId.toString()),
                             description = content.toString(),
-                            source = "Météo-France",
+                            source = "MÃ©tÃ©o-France",
                             severity = warningsDictionaryResult.colors
                                 ?.firstOrNull { c -> c.id == timelapsItem.colorId }
                                 ?.name?.let { h ->
@@ -695,7 +679,7 @@ class MfService @Inject constructor(
                         }
                     }
                     val color = getWarningColor(colors)
-                    val title = it.blocTitle ?: "Bulletin de Vigilance météo"
+                    val title = it.blocTitle ?: "Bulletin de Vigilance mÃ©tÃ©o"
                     Alert(
                         // Create unique ID from: alert type ID, alert level, start time
                         alertId = Objects.hash(title, color, warningsResult.updateTime).toString(),
@@ -703,8 +687,8 @@ class MfService @Inject constructor(
                         endDate = warningsResult.endValidityTime,
                         headline = title,
                         description = getWarningContent(null, warningsResult),
-                        source = "Météo-France",
-                        severity = AlertSeverity.EXTREME, // Let’s put it on top
+                        source = "MÃ©tÃ©o-France",
+                        severity = AlertSeverity.EXTREME, // Letâ€™s put it on top
                         color = color
                     )
                 } else {
@@ -733,14 +717,14 @@ class MfService @Inject constructor(
                             startDate = timelapsItem.beginTime,
                             endDate = timelapsItem.endTime,
                             headline = getWarningType(timelaps.phenomenonId) +
-                                " — " +
+                                " â€” " +
                                 getWarningText(timelapsItem.colorId),
                             description = if (timelapsItem.colorId >= 3) {
                                 getWarningContent(timelaps.phenomenonId, warningsResult)
                             } else {
                                 null
                             },
-                            source = "Météo-France",
+                            source = "MÃ©tÃ©o-France",
                             severity = AlertSeverity.getInstance(timelapsItem.colorId),
                             color = getWarningColor(timelapsItem.colorId)
                         )
@@ -790,9 +774,9 @@ class MfService @Inject constructor(
     // TODO: Move to non-translatable en/fr strings
     private fun getWarningText(colorId: Int): String = when (colorId) {
         4 -> "Vigilance absolue"
-        3 -> "Soyez très vigilant"
+        3 -> "Soyez trÃ¨s vigilant"
         2 -> "Soyez attentif"
-        else -> "Pas de vigilance particulière"
+        else -> "Pas de vigilance particuliÃ¨re"
     }
 
     @ColorInt
@@ -862,7 +846,7 @@ class MfService @Inject constructor(
             }
             // TODO: Move to non-translatable en/fr strings
             content
-                .append("<h2>Conséquences possibles</h2>\n")
+                .append("<h2>ConsÃ©quences possibles</h2>\n")
                 .append(consequences)
         }
         if (!advices.isNullOrEmpty()) {
@@ -994,8 +978,8 @@ class MfService @Inject constructor(
                 frenchDepartments.getOrElse(result.properties.frenchDepartment) { null }
             } else {
                 null
-            }, // Département
-            admin2Code = result.properties.frenchDepartment, // Département
+            }, // DÃ©partement
+            admin2Code = result.properties.frenchDepartment, // DÃ©partement
             city = result.properties.name
         )
     }
@@ -1127,39 +1111,39 @@ class MfService @Inject constructor(
             "04" to "Alpes de Hautes-Provence",
             "05" to "Hautes-Alpes",
             "06" to "Alpes-Maritimes",
-            "07" to "Ardèche",
+            "07" to "ArdÃ¨che",
             "08" to "Ardennes",
-            "09" to "Ariège",
+            "09" to "AriÃ¨ge",
             "10" to "Aube",
             "11" to "Aude",
             "12" to "Aveyron",
-            "13" to "Bouches-du-Rhône",
+            "13" to "Bouches-du-RhÃ´ne",
             "14" to "Calvados",
             "15" to "Cantal",
             "16" to "Charente",
             "17" to "Charente-Maritime",
             "18" to "Cher",
-            "19" to "Corrèze",
-            "21" to "Côte-d'Or",
-            "22" to "Côtes d'Armor",
+            "19" to "CorrÃ¨ze",
+            "21" to "CÃ´te-d'Or",
+            "22" to "CÃ´tes d'Armor",
             "23" to "Creuse",
             "24" to "Dordogne",
             "25" to "Doubs",
-            "26" to "Drôme",
+            "26" to "DrÃ´me",
             "27" to "Eure",
             "28" to "Eure-et-Loir",
-            "29" to "Finistère",
+            "29" to "FinistÃ¨re",
             "2A" to "Corse-du-Sud",
             "2B" to "Haute-Corse",
             "30" to "Gard",
             "31" to "Haute-Garonne",
             "32" to "Gers",
             "33" to "Gironde",
-            "34" to "Hérault",
+            "34" to "HÃ©rault",
             "35" to "Ille-et-Vilaine",
             "36" to "Indre",
             "37" to "Indre-et-Loire",
-            "38" to "Isère",
+            "38" to "IsÃ¨re",
             "39" to "Jura",
             "40" to "Landes",
             "41" to "Loir-et-Cher",
@@ -1169,7 +1153,7 @@ class MfService @Inject constructor(
             "45" to "Loiret",
             "46" to "Lot",
             "47" to "Lot-et-Garonne",
-            "48" to "Lozère",
+            "48" to "LozÃ¨re",
             "49" to "Maine-et-Loire",
             "50" to "Manche",
             "51" to "Marne",
@@ -1179,20 +1163,20 @@ class MfService @Inject constructor(
             "55" to "Meuse",
             "56" to "Morbihan",
             "57" to "Moselle",
-            "58" to "Nièvre",
+            "58" to "NiÃ¨vre",
             "59" to "Nord",
             "60" to "Oise",
             "61" to "Orne",
             "62" to "Pas-de-Calais",
-            "63" to "Puy-de-Dôme",
-            "64" to "Pyrénées-Atlantiques",
-            "65" to "Hautes-Pyrénées",
-            "66" to "Pyrénées-Orientales",
+            "63" to "Puy-de-DÃ´me",
+            "64" to "PyrÃ©nÃ©es-Atlantiques",
+            "65" to "Hautes-PyrÃ©nÃ©es",
+            "66" to "PyrÃ©nÃ©es-Orientales",
             "67" to "Bas-Rhin",
             "68" to "Haut-Rhin",
-            "69" to "Rhône",
-            "70" to "Haute-Saône",
-            "71" to "Saône-et-Loire",
+            "69" to "RhÃ´ne",
+            "70" to "Haute-SaÃ´ne",
+            "71" to "SaÃ´ne-et-Loire",
             "72" to "Sarthe",
             "73" to "Savoie",
             "74" to "Haute-Savoie",
@@ -1200,13 +1184,13 @@ class MfService @Inject constructor(
             "76" to "Seine-Maritime",
             "77" to "Seine-et-Marne",
             "78" to "Yvelines",
-            "79" to "Deux-Sèvres",
+            "79" to "Deux-SÃ¨vres",
             "80" to "Somme",
             "81" to "Tarn",
             "82" to "Tarn-et-Garonne",
             "83" to "Var",
             "84" to "Vaucluse",
-            "85" to "Vendée",
+            "85" to "VendÃ©e",
             "86" to "Vienne",
             "87" to "Haute-Vienne",
             "88" to "Vosges",
@@ -1224,14 +1208,14 @@ class MfService @Inject constructor(
             "971" to "Guadeloupe",
             "972" to "Martinique",
             "973" to "Guyane",
-            "974" to "La Réunion",
+            "974" to "La RÃ©union",
             "975" to "Saint-Pierre-et-Miquelon",
             "976" to "Mayotte",
-            "977" to "Saint-Barthélemy",
+            "977" to "Saint-BarthÃ©lemy",
             "978" to "Saint-Martin",
             "986" to "Wallis-et-Futuna",
-            "987" to "Polynésie française",
-            "988" to "Nouvelle-Calédonie"
+            "987" to "PolynÃ©sie franÃ§aise",
+            "988" to "Nouvelle-CalÃ©donie"
         )
     }
 }
