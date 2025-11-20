@@ -187,11 +187,11 @@ object UnitUtils {
     }
 
     private val ARABIC_DIGITS = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-    private val ARABIC_INDIC_DIGITS = charArrayOf('Ù ', 'Ù¡', 'Ù¢', 'Ù£', 'Ù¤', 'Ù¥', 'Ù¦', 'Ù§', 'Ù¨', 'Ù©')
-    private val BENGALI_DIGITS = charArrayOf('à§¦', 'à§§', 'à§¨', 'à§©', 'à§ª', 'à§«', 'à§¬', 'à§­', 'à§®', 'à§¯')
-    private val DEVANAGARI_DIGITS = charArrayOf('à¥¦', 'à¥§', 'à¥¨', 'à¥©', 'à¥ª', 'à¥«', 'à¥¬', 'à¥­', 'à¥®', 'à¥¯')
-    private val PERSIAN_DIGITS = charArrayOf('Û°', 'Û±', 'Û²', 'Û³', 'Û´', 'Ûµ', 'Û¶', 'Û·', 'Û¸', 'Û¹')
-    private val TAMIL_DIGITS = charArrayOf('à¯¦', 'à¯§', 'à¯¨', 'à¯©', 'à¯ª', 'à¯«', 'à¯¬', 'à¯­', 'à¯®', 'à¯¯')
+    private val ARABIC_INDIC_DIGITS = charArrayOf('\u0660', '\u0661', '\u0662', '\u0663', '\u0664', '\u0665', '\u0666', '\u0667', '\u0668', '\u0669')
+    private val BENGALI_DIGITS = charArrayOf('\u09E6', '\u09E7', '\u09E8', '\u09E9', '\u09EA', '\u09EB', '\u09EC', '\u09ED', '\u09EE', '\u09EF')
+    private val DEVANAGARI_DIGITS = charArrayOf('\u0966', '\u0967', '\u0968', '\u0969', '\u096A', '\u096B', '\u096C', '\u096D', '\u096E', '\u096F')
+    private val PERSIAN_DIGITS = charArrayOf('\u06F0', '\u06F1', '\u06F2', '\u06F3', '\u06F4', '\u06F5', '\u06F6', '\u06F7', '\u06F8', '\u06F9')
+    private val TAMIL_DIGITS = charArrayOf('\u0BE6', '\u0BE7', '\u0BE8', '\u0BE9', '\u0BEA', '\u0BEB', '\u0BEC', '\u0BED', '\u0BEE', '\u0BEF')
     internal val DIGITS =
         ARABIC_DIGITS + ARABIC_INDIC_DIGITS + BENGALI_DIGITS + DEVANAGARI_DIGITS + PERSIAN_DIGITS + TAMIL_DIGITS
 }
