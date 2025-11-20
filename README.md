@@ -51,7 +51,3 @@ This project was developed by:
 - Akhil Menon (AM.EN.U4CSE22030)
 - Navaneeth N (AM.EN.U4CSE22039)
 - Sreelakshmi M O (AM.EN.U4CSE22050)
-
-## License
-
-This project is licensed under the GNU Lesser General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
