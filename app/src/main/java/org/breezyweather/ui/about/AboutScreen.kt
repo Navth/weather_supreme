@@ -42,7 +42,7 @@ fun AboutScreen() {
 
 
                         Text(
-                            text = "Breezy Weather",
+                            text = "Weather Supreme",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center
